@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :show, :index ]
   def index
   end
 
@@ -13,8 +14,14 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    # render plain: event_params.inspect
+
+    @event.user = current_user
+
+    if @event.save
+      render plain: event_params.inspect
+    else
+      render 'new'
+    end
   end
 
   def update
