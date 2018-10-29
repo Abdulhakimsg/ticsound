@@ -1,9 +1,15 @@
-<h1>ALL EVENT</h1>
 
 <%=link_to 'NEW EVENT', new_event_path %>
 
-<h1>My Favourites</h1>
-
+<h1>MY FAVOURITES</h1>
+<table>
+<% @favourites.each do |favourite| %>
+<tr>
+<td><%=favourite.event.name %></td>
+<td></td>
+</tr>
+<%end%>
+</table>
 
 <h1>ALL EVENTS</h1>
 <table>
@@ -28,3 +34,6 @@
 </tr>
  <% end %>
 </table>
+
+
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>   

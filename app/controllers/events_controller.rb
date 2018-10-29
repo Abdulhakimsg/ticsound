@@ -1,10 +1,14 @@
 require "byebug"
 
 class EventsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!
 
   def index
     @events = Event.all
+    @favourites = Favourite.where(user_id: current_user.id)
+    # @userfav = @favourites.events
+
+    # current_user.favourites(event_id: event.id)\
   end
 
   def show
@@ -38,7 +42,6 @@ class EventsController < ApplicationController
     # current_user = user.events
     current_user.favourites.new(event_id: params[:id])
     current_user.save
-    
   end
 
   private
