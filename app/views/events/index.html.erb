@@ -1,3 +1,30 @@
-<h1>EVENT</h1>
+<h1>ALL EVENT</h1>
 
-<%= link_to 'NEW EVENT', new_event_path %>
+<%=link_to 'NEW EVENT', new_event_path %>
+
+<h1>My Favourites</h1>
+
+
+<h1>ALL EVENTS</h1>
+<table>
+<% @events.each do |event| %>
+<tr>
+    
+        <td><Strong><%= event.name %></Strong></td>
+        <td><%= event.venue %></td>
+        <td><%= event.address %></td>
+        <td><%= event.description %></td>
+        <td><%= event.starttime %></td>
+        <td><%= event.endtime %></td> 
+        <td>
+        <%= form_with scope: :event, url:"/favourites/1" , local: true do |form| %>
+        <p>
+		<%= form.submit value: "my fav" %>
+        </p> 
+        <% end %>
+
+        </td>
+
+</tr>
+ <% end %>
+</table>

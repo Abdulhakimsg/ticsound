@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :events
+  has_many :favourites
+  has_many :events, through: :favourites
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]
@@ -17,8 +21,6 @@ class User < ApplicationRecord
       end
     end
   end
-
-  has_many :events
 
   attr_writer :login
 

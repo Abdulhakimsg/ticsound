@@ -1,8 +1,10 @@
+require "byebug"
+
 class EventsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
 
   def index
-    @photos = Photo.all
+    @events = Event.all
   end
 
   def show
@@ -30,6 +32,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def postfav
+    # current_user = user.events
+    current_user.favourites.new(event_id: params[:id])
+    current_user.save
+    render plain: params.inspect
   end
 
   private
