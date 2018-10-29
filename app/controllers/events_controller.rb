@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, :except => [ :show, :index ]
+  before_action :authenticate_user!, :except => [:show, :index]
+
   def index
   end
 
@@ -20,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       render plain: event_params.inspect
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -31,7 +32,8 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
-    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime)
+    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime, :postal_code)
   end
 end
