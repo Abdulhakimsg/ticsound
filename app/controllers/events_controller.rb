@@ -3,6 +3,13 @@ require "byebug"
 class EventsController < ApplicationController
   before_action :authenticate_user!
 
+  # def get_locations
+  #   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{params[:latitude]},#{params[:longitude]}&radius=500&key=#{Rails.application.secrets.google_places_key}"
+  #   http_call = open(url).read
+  #   response = JSON.parse(http_call, {:symbolize_names => true})
+  #   @locations = response[:results]
+  # end
+
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
@@ -12,6 +19,7 @@ class EventsController < ApplicationController
   end
 
   def show
+     @event = Event.find(params[:id])
   end
 
   def new
@@ -25,11 +33,12 @@ class EventsController < ApplicationController
 
     @event.user = current_user
 
-    if @event.save
-      render plain: event_params.inspect
-    else
-      render "new"
-    end
+    #if
+    @event.save
+      #render plain: event_params.inspect
+    #else
+    # render "new"
+    #end
   end
 
   def update
@@ -47,6 +56,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime, :postal_code)
+    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime,)
   end
 end
