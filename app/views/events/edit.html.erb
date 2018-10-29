@@ -1,4 +1,4 @@
-<%= form_with scope: :event, url: events_path, local: true do |form| %>
+<%= form_with scope: :event, model: @event, local: true do |form| %>
 
 	<p>
 		<%= form.label :name %><br>
@@ -37,6 +37,10 @@
 
 	<p>
 		<%= form.label :image %><br>
+		<% if @event.image? %>
+		<%= image_tag(@event.image_url) %><br>
+		<%= form.check_box :remove_image %> Remove Image<br>
+		<% end %>
 		<%= form.file_field :image %>
 	</p>
 
