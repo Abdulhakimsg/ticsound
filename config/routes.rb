@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   # resources :users
 
   resources :events
-  post "/favourites/:id", to: "events#postfav"
+  post "/favourites/:id", to: "events#postfav" , as: "post_fav"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

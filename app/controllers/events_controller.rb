@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     # current_user = user.events
     current_user.favourites.new(event_id: params[:id])
     current_user.save
-    render plain: params.inspect
+    
   end
 
   private

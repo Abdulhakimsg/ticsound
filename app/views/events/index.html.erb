@@ -17,7 +17,7 @@
         <td><%= event.starttime %></td>
         <td><%= event.endtime %></td> 
         <td>
-        <%= form_with scope: :event, url:"/favourites/1" , local: true do |form| %>
+        <%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
         <p>
 		<%= form.submit value: "my fav" %>
         </p> 
