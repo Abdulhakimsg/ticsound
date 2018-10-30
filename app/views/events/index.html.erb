@@ -10,6 +10,7 @@
         <% @myevents.each do |event| %>
             <td><%= event.name %></td>
             <td><%= event.user_id %></td>
+            <td><%= link_to "Delete Event", event_path(id: event.id), method: :delete %></td>
     </tr>
     <%end%>
 </table>

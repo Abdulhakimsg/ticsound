@@ -41,6 +41,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.user = current_user
+    @event.destroy
+    redirect_to events_path
   end
 
   def postfav
