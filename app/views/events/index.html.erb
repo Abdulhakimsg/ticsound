@@ -1,6 +1,7 @@
 <h1>My ID</h1>
 
 <h2><%= "WELCOME  #{current_user.username} " %></h2>
+<p><%= image_tag(current_user.avatar_url , width: 96) %></p>
 
 <%=link_to 'CREATE NEW EVENT?', new_event_path %>
 

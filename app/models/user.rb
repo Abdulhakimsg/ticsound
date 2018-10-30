@@ -1,4 +1,5 @@
-require 'byebug'
+require "byebug"
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -6,15 +7,15 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :events, through: :favourites
 
+  mount_uploader :avatar, AvatarUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]
 
-#byebug
-require 'socket'
-Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
-
-
+  #byebug
+  require "socket"
+  Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
 
   # geocoded_by :ip_address,
   #             :latitude => :lat, :longitude => :lon
