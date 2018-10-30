@@ -1,3 +1,4 @@
+require 'byebug'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,6 +9,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]
+
+#byebug
+require 'socket'
+Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
+
+
+
+  # geocoded_by :ip_address,
+  #             :latitude => :lat, :longitude => :lon
+  # after_validation :geocode
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
