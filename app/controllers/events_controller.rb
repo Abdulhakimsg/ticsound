@@ -10,6 +10,8 @@ class EventsController < ApplicationController
   #   @locations = response[:results]
   # end
 
+  #session[:latitude] = "xyz"
+
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
