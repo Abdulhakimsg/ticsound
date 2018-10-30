@@ -50,6 +50,12 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def destroyfav
+    @favourites = Favourite.find(params[:id])
+    @favourites.destroy
+    redirect_to events_path
+  end
+
   private
 
   def event_params

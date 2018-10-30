@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   # resources :users
-
+  
   resources :events
   post "/favourites/:id", to: "events#postfav", as: "post_fav"
   get "/favourites", to: "events#showfav", as: "show_fav"
