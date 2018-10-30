@@ -37,6 +37,7 @@
             <td><%= event.starttime %></td>
             <td><%= event.endtime %></td> 
             <td><%= event.user_id %></td> 
+            <td><%= image_tag(event.image_url, width: 100) %></td>
             <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
             <p>
             <%= form.submit value: "my fav" %>
