@@ -10,7 +10,12 @@ class EventsController < ApplicationController
   #   @locations = response[:results]
   # end
 
-  #session[:latitude] = "xyz"
+  def currloca
+    result = "lat: #{params[:lat]} & lon: #{params[:lon]}"
+    session[:lat] = params[:lat]
+    session[:lon] = params[:lon]
+  end
+
 
   def index
     @events = Event.all
@@ -22,6 +27,7 @@ class EventsController < ApplicationController
 
   def show
      @event = Event.find(params[:id])
+     #@userloc = @userlocation.address
   end
 
   def new

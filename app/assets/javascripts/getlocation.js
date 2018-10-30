@@ -15,15 +15,25 @@ function getLocation() {
 function showPosition(position) {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude
-        console.log(latitude)
-        console.log(longitude)
-        console.log("Latitude: " + latitude +
-                "Longitude: " + longitude);
+        console.log("Latitude: " + latitude + "Longitude: " + longitude);
 
-        // ajax request to server is done here
-        const xml = new XMLHTTPRequest();
-        `/users/coordinates?lat=${latitude}&lon=${longitude}`
-        ajax.send
+
+        //responsehandler
+        function responseHandler() {
+            console.log("response text", this.responseText);
+            console.log("status text", this.statusText);
+            console.log("status code", this.status);
+        };
+
+        //ajax request to server is done here
+        var request = new XMLHttpRequest();
+
+        request.addEventListener("load", responseHandler)
+        //open request
+        const url = '/users-coordinates?lat=' + latitude + "&lon=" + longitude
+        request.open("GET", url)
+        //send the request `?lat=${latitude}&lon=${longitude}`
+        request.send();
 }
 
 // params[:latitude]
@@ -33,6 +43,6 @@ function showPosition(position) {
 
 // session[:lat] if session[:lat] != nil
 
-function tester() {
-    alert('it works');
-};
+// function tester() {
+//     alert('it works');
+// };

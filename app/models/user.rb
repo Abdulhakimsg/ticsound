@@ -10,6 +10,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,
          :validatable, authentication_keys: [:login]
 
+  geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, :reverse_geocode, if: :address_changed?
 
 # require 'socket'
 # Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
