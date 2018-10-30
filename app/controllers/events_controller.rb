@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   end
 
   def show
-     @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
     #if
     @event.save
-      #render plain: event_params.inspect
+    #render plain: event_params.inspect
     #else
     # render "new"
     #end
@@ -51,11 +51,12 @@ class EventsController < ApplicationController
     # current_user = user.events
     current_user.favourites.new(event_id: params[:id])
     current_user.save
+    redirect_to events_path
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime,)
+    params.require(:event).permit(:name, :venue, :address, :ticket_url, :description, :starttime, :endtime)
   end
 end
