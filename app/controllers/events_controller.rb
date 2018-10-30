@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
+    @myevents = Event.where(user_id: current_user.id)
     # @userfav = @favourites.events
 
     # current_user.favourites(event_id: event.id)\
@@ -30,15 +31,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
     @event.user = current_user
-
-    #if
     @event.save
+    redirect_to events_path
     #render plain: event_params.inspect
-    #else
-    # render "new"
-    #end
   end
 
   def update

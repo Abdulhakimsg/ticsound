@@ -1,5 +1,18 @@
+<h1>My ID</h1>
 
-<%=link_to 'NEW EVENT', new_event_path %>
+<h2><%= "WELCOME  #{current_user.username} " %></h2>
+
+<%=link_to 'CREATE NEW EVENT?', new_event_path %>
+
+<h1>My EVENTS</h1>
+<table>
+<tr>
+<% @myevents.each do |event| %>
+<td><%= event.name %></td>
+<td><%= event.user_id %></td>
+</tr>
+<%end%>
+</table>
 
 <h1>MY FAVOURITES</h1>
 <table>
@@ -15,13 +28,13 @@
 <table>
 <% @events.each do |event| %>
 <tr>
-    
-        <td><Strong><%= event.name %></Strong></td>
+        <td><Strong><%= link_to event.name, event_path(event.id) %></Strong></td>
         <td><%= event.venue %></td>
         <td><%= event.address %></td>
         <td><%= event.description %></td>
         <td><%= event.starttime %></td>
         <td><%= event.endtime %></td> 
+        <td><%= event.user_id %></td> 
         <td>
         <%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
         <p>
