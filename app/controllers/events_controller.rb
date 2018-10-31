@@ -10,6 +10,13 @@ class EventsController < ApplicationController
   #   @locations = response[:results]
   # end
 
+  def currloca
+    result = "lat: #{params[:lat]} & lon: #{params[:lon]}"
+    session[:lat] = params[:lat]
+    session[:lon] = params[:lon]
+  end
+
+
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
@@ -39,6 +46,16 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+
+    @event.user = current_user
+
+    if @event.update(event_params)
+      render plain: event_params.inspect
+    else
+      render "update"
+      redirect_to events_path
+    end
   end
 
   def destroy

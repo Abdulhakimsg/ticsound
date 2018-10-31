@@ -2,7 +2,7 @@
 <p><%= @event.venue %></p>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}&key=AIzaSyCoyQTMWR5dEOWmtHhp6_4KIFfB4KkTTWU" %>
 
-<% for event in @event.nearbys(10) %>
-<li>Nearbys Event: <%=link_to event.name, event %>(<%=event.distance.round(1)%>miles)</li>
+<% for event in @event.nearbys(10, units: :km) %>
+<li>Nearbys Event: <%=link_to event.name, event %>(<%= event.distance.round(1)%>km)</li>
 <%end%>
 </ul>
