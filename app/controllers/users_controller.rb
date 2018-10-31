@@ -17,9 +17,15 @@ class UsersController < ApplicationController
     if session[:lat] && session[:lon]
       # @userlocation =  Geocoder.search([session[:lat],session[:lon]])
       #puts "LAT: #{session[:lat]} & LON: #{session[:lon]}"
-      @nearbyevents = Event.near([session[:lat], session[:lon]], 5, units: :km)
+      @nearbyevents = Event.near([session[:lat], session[:lon]], 1, units: :km)
     end
-    @events = Event.all
+      @events = Event.all
+   # if i have coordinate
+    #   then find the event near me
+    #   if there are events near me
+    #     then show events
+    #   otherwise if  there is no event near me
+    #     then show all event
   end
 
 end
