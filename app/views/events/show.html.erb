@@ -1,8 +1,68 @@
-<h2><%= @event.name %></h2>
-<p><%= @event.venue %></p>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}&key=AIzaSyCoyQTMWR5dEOWmtHhp6_4KIFfB4KkTTWU" %>
 
-<% for event in @event.nearbys(10, units: :km) %>
-<li>Nearbys Event: <%=link_to event.name, event %>(<%= event.distance.round(1)%>km)</li>
-<%end%>
-</ul>
+<div class="container">
+<div class="row" style="margin-top: 20px;">
+	<%= image_tag @event.image_url, width: "100%", height: "100%"%>
+</div>
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-12 col-md-10">
+			<h3><%= @event.name %></h3>
+			<h5><%= @event.venue %></h5>
+		</div>
+			<div div class="col-12 col-md-2">
+				<a class="btn btn-primary" href="<%= @event.ticket_url %>" target="_blank" role="button">Get Ticket Here</a>
+			</div>
+	</div>
+
+	<div class="row">
+		<div class="col col-lg-12">
+			<p><%= @event.address %></p>
+			<p><%= @event.description %></p>
+		</div>
+
+	</div>
+
+	<!-- map div -->
+	<div class="row">
+		<div class="col col-lg-12">
+			<div id="map"></div>
+		</div>
+	</div>
+
+
+	<div class="row" style="margin-top: 20px;">
+		<div class="col col-lg-12">
+			<% @myevents.each do |event|%>
+			<p>Nearby Events: <%=link_to event.name, event %>, <%= event.starttime.strftime('%D') %></p>
+			<%end%>
+		</div>
+	</div>
+
+</div>
+<style>
+      #map {
+        width: 100%;
+        height: 250px;
+        background-color: grey;
+      }
+</style>
+
+<script>
+//Initialize and add the map
+var latitude = <%= @event.latitude %>;
+var longitude = <%= @event.longitude %>
+console.log("pulling lat long from erb",latitude + longitude)
+var eventmap = {lat: latitude, lng: longitude}
+var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: latitude, lng: longitude},
+        	zoom: 18
+        });
+    var marker = new google.maps.Marker({position: eventmap, map: map});
+  }
+
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoyQTMWR5dEOWmtHhp6_4KIFfB4KkTTWU&callback=initMap">
+    //google api
+</script>
