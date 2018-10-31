@@ -11,6 +11,9 @@
         <% @myevents.each do |event| %>
             <td><%= event.name %></td>
             <td><%= event.user_id %></td>
+             <% if user_signed_in? && current_user.id == event.user_id %>
+                <td><%= link_to "edit event", edit_event_path(id: event.id) %></td>
+            <%end%>
             <td><%= link_to "Delete Event", event_path(id: event.id), method: :delete %></td>
     </tr>
     <%end%>
@@ -39,15 +42,19 @@
             <td><%= event.endtime %></td> 
             <td><%= event.user_id %></td> 
             <td><%= image_tag(event.image_url, width: 100) %></td>
-            <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
-            <p>
-            <%= form.submit value: "my fav" %>
-            </p> 
-            <% end %>
-             </td>
+            <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+                <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
+                <p>
+                <%= form.submit value: "my fav" %>
+                </p> 
+                <% end %>
+                </td>
+            <%end%> 
         </tr>
     <% end %>
 </table>
 
 
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+
+
