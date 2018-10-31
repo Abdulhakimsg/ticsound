@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ticsound</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+		<title>Ticsound</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<!-- Custom styles for this template -->
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<% if user_signed_in? %>
+				<%= link_to 'Ticsound', events_path, class: "navbar-brand" %>
+				<% else %>
+				<%= link_to 'Ticsound', users_url, class: "navbar-brand" %>
+				<% end %>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarText">
+						<ul class="navbar-nav mr-auto">
+								<% if user_signed_in? %>
+								<li class="nav-item active">
+										<%= link_to 'New Event', new_event_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Account Settings', edit_user_registration_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
+								</li>
+								<% else %>
+								<li class="nav-item">
+										<%= link_to 'Signup', new_user_registration_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
+								</li>
+								<% end %>
+						</ul>
+				</div>
+		</nav>
+		<%= yield %>
+		<!-- Footer -->
+		<footer>
+				<div class="container">
+						Copyright &copy; Ticsound 2018
+				</div>
+		</footer>
+</body>
+
 </html>

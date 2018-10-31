@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     #render json: {message: result} ,status: 200
   end
 
+  def index
+    @users = User.all
+  end
+
   def show
 
     #@events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)

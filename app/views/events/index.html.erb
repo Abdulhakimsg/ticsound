@@ -1,39 +1,60 @@
+<h1>My ID</h1>
 
-<%=link_to 'NEW EVENT', new_event_path %>
+<h2><%= "WELCOME  #{current_user.username} " %></h2>
+<p><%= image_tag(current_user.avatar_url , width: 96) %></p>
+
+<%=link_to 'CREATE NEW EVENT?', new_event_path %>
+
+<h1>My EVENTS</h1>
+<table>
+    <tr>
+        <% @myevents.each do |event| %>
+            <td><%= event.name %></td>
+            <td><%= event.user_id %></td>
+             <% if user_signed_in? && current_user.id == event.user_id %>
+                <td><%= link_to "edit event", edit_event_path(id: event.id) %></td>
+            <%end%>
+            <td><%= link_to "Delete Event", event_path(id: event.id), method: :delete %></td>
+    </tr>
+    <%end%>
+</table>
 
 <h1>MY FAVOURITES</h1>
-<table>
-<% @favourites.each do |favourite| %>
-<tr>
-<td><%=favourite.event.name %></td>
-<td></td>
-</tr>
-<%end%>
+    <table>
+        <% @favourites.each do |favourite| %>
+            <tr>
+                <td><%=favourite.event.name %></td>                
+                <td><%= link_to "Delete Fav", destroy_fav_path(id: favourite.id), method: :delete %></td>
+             </td>
+            </tr>
+    <%end%>
 </table>
 
 <h1>ALL EVENTS</h1>
-<table>
-<% @events.each do |event| %>
-<tr>
-    
-        <td><Strong><%= event.name %></Strong></td>
-        <td><%= event.venue %></td>
-        <td><%= event.address %></td>
-        <td><%= event.description %></td>
-        <td><%= event.starttime %></td>
-        <td><%= event.endtime %></td> 
-        <td>
-        <%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
-        <p>
-		<%= form.submit value: "my fav" %>
-        </p> 
-        <% end %>
-
-        </td>
-
-</tr>
- <% end %>
+    <table>
+    <% @events.each do |event| %>
+        <tr>
+            <td><Strong><%= link_to event.name, event_path(event.id) %></Strong></td>
+            <td><%= event.venue %></td>
+            <td><%= event.address %></td>
+            <td><%= event.description %></td>
+            <td><%= event.starttime %></td>
+            <td><%= event.endtime %></td> 
+            <td><%= event.user_id %></td> 
+            <td><%= image_tag(event.image_url, width: 100) %></td>
+            <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+                <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
+                <p>
+                <%= form.submit value: "my fav" %>
+                </p> 
+                <% end %>
+                </td>
+            <%end%> 
+        </tr>
+    <% end %>
 </table>
 
 
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+
+

@@ -33,6 +33,15 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+  	<% if @user.avatar? %>
+		<%= image_tag(@user.avatar_url, width: 96) %><br>
+		<%= f.check_box :remove_avatar %> Remove Avatar<br>
+		<% end %>
+  	<%= f.label :avatar %><br />
+  	<%= f.file_field :avatar %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
