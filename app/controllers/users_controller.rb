@@ -1,4 +1,5 @@
 require 'byebug'
+require 'date'
 
 class UsersController < ApplicationController
    before_action :authenticate_user!, except: [:currloca]
@@ -13,19 +14,23 @@ class UsersController < ApplicationController
 
   def show
 
+    #@events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
+    #Event.where(starttime == )
+    #@sortevents = @events.sort_by &:starttime
+    @sortevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
+
     @user = User.find(params[:id])
     if session[:lat] && session[:lon]
       # @userlocation =  Geocoder.search([session[:lat],session[:lon]])
       #puts "LAT: #{session[:lat]} & LON: #{session[:lon]}"
-      @nearbyevents = Event.near([session[:lat], session[:lon]], 1, units: :km)
+      # @nearbyevents = Event.near([session[:lat], session[:lon]], 3, units: :km)
+      # @nearbyevents = @nearbyevents.where()
+      @sortevents = @sortevents.near([session[:lat], session[:lon]], 5, units: :km)
+      # @sortevents = @sortevents.where/sort_by
     end
-      @events = Event.all
-   # if i have coordinate
-    #   then find the event near me
-    #   if there are events near me
-    #     then show events
-    #   otherwise if  there is no event near me
-    #     then show all event
+
+
+
   end
 
 end

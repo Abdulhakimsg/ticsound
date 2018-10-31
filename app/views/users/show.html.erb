@@ -1,16 +1,7 @@
 <h2><%= @user.username %></h2>
 
-<h2>Events Near Me</h2>
-<% @nearbyevents.each do|event| %>
-<table>
-	<tr>
-		<td><strong><%= event.name %></strong></td>
-		<td><%= event.venue %></td>
-		<td><%= event.address %></td>
-	</tr>
-<%end%>
-<h2>All Events</h2>
-<% @events.each do|event| %>
+<h2>Events</h2>
+<% @sortevents.each do|event| %>
 <table>
 	<tr>
 		<td><strong><%= event.name %></strong></td>
