@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     session[:lon] = params[:lon]
   end
 
-
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
@@ -51,7 +50,7 @@ class EventsController < ApplicationController
     @event.user = current_user
 
     if @event.update(event_params)
-      render plain: event_params.inspect
+      redirect_to events_path
     else
       render "update"
       redirect_to events_path

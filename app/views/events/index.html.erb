@@ -1,4 +1,4 @@
-<h1>My ID</h1>
+<!--<h1>My ID</h1>
 
 <h2><%= "WELCOME  #{current_user.username} " %></h2>
 <p><%= image_tag(current_user.avatar_url , width: 96) %></p>
@@ -55,6 +55,30 @@
 </table>
 
 
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
+
+-->
+<h1>My Events</h1>
+<div class = "row">
+<% @myevents.each do |event| %> 
+<div class = "myevents col-3">
+    <div class="card bg-dark text-white" >
+            <img class="card-img" src="<%= event.image %>" alt="Card image">
+            <div class="card-img-overlay">
+            <h5 class="card-title"><%= event.name %></h5>
+            <p class="card-text"><%= event.starttime %></p>
+        </div>
+    </div>
+</div>
+<%end%> 
+</div>
+
+
+
+
+
+
+
+
 
 
