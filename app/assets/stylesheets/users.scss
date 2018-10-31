@@ -1,3 +1,22 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+footer {
+		background: #343A40;
+		padding: 15px;
+		color: white;
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+}
+
+body {
+		margin-bottom: 54px;
+}
+
+.carousel-inner img {
+		width: 100%;
+		height: 100%;
+}
+
+.bg-black text-center h-100 project {
+	background: black;
+}

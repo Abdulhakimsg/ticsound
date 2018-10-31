@@ -8,18 +8,15 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 		<!-- Custom styles for this template -->
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 
 <body>
-		<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<% if user_signed_in? %>
-				<%= link_to 'Ticsound', events_path, class: "navbar-brand" %>
+				<%= link_to image_tag('/logo.png'), events_path, class: "navbar-brand" %>
 				<% else %>
-				<%= link_to 'Ticsound', users_url, class: "navbar-brand" %>
+				<%= link_to image_tag('/logo.png'), users_url, class: "navbar-brand" %>
 				<% end %>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -34,26 +31,34 @@
 										<%= link_to 'Account Settings', edit_user_registration_url, class: "nav-link" %>
 								</li>
 								<li class="nav-item">
-									<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
+										<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
 								</li>
 								<% else %>
 								<li class="nav-item">
 										<%= link_to 'Signup', new_user_registration_url, class: "nav-link" %>
 								</li>
 								<li class="nav-item">
-							<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
+										<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
 								</li>
 								<% end %>
 						</ul>
 				</div>
 		</nav>
 		<%= yield %>
-		<!-- Footer -->
-		<footer>
-				<div class="container">
+</body>
+<!-- Footer -->
+<footer>
+		<div class="row">
+				<div class="col-sm-12">
 						Copyright &copy; Ticsound 2018
 				</div>
-		</footer>
-</body>
+		</div>
+</footer>
+<script>
+$('#inputGroupFile01').on('change', function() {
+		var fileName = $(this).val();
+		$(this).next('.custom-file-label').html(fileName);
+})
+</script>
 
 </html>

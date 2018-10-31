@@ -2,7 +2,7 @@ require 'byebug'
 require 'date'
 
 class UsersController < ApplicationController
-   before_action :authenticate_user!, except: [:currloca]
+   before_action :authenticate_user!, except: [:currloca, :index]
 
   def currloca
     result = "lat: #{params[:lat]} & lon: #{params[:lon]}"
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
+    @events = Event.all
   end
 
   def show
