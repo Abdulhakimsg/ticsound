@@ -8,41 +8,47 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 		<!-- Custom styles for this template -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/css/grayscale.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-				<div class="container">
-						<a class="navbar-brand js-scroll-trigger" href="#page-top">Ticsound</a>
-						<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-								Menu
-								<i class="fas fa-bars"></i>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarResponsive">
-								<ul class="navbar-nav ml-auto">
-										<li class="nav-item">
-												<a class="nav-link js-scroll-trigger" href="#about">New Event</a>
-										</li>
-										<li class="nav-item">
-												<a class="nav-link js-scroll-trigger" href="#projects">Account Settings</a>
-										</li>
-										<li class="nav-item">
-												<a class="nav-link js-scroll-trigger" href="#signup">Logout</a>
-										</li>
-								</ul>
-						</div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<% if user_signed_in? %>
+				<%= link_to 'Ticsound', events_path, class: "navbar-brand" %>
+				<% else %>
+				<%= link_to 'Ticsound', users_url, class: "navbar-brand" %>
+				<% end %>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarText">
+						<ul class="navbar-nav mr-auto">
+								<% if user_signed_in? %>
+								<li class="nav-item active">
+										<%= link_to 'New Event', new_event_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Account Settings', edit_user_registration_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
+								</li>
+								<% else %>
+								<li class="nav-item">
+										<%= link_to 'Signup', new_user_registration_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
+								</li>
+								<% end %>
+						</ul>
 				</div>
 		</nav>
 		<%= yield %>
 		<!-- Footer -->
-		<footer class="bg-black small text-center text-white-50">
+		<footer>
 				<div class="container">
 						Copyright &copy; Ticsound 2018
 				</div>
