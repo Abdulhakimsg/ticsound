@@ -10,6 +10,7 @@
 		<!-- Custom styles for this template -->
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,14 +34,14 @@
 										<%= link_to 'Account Settings', edit_user_registration_url, class: "nav-link" %>
 								</li>
 								<li class="nav-item">
-										<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
+									<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
 								</li>
 								<% else %>
 								<li class="nav-item">
 										<%= link_to 'Signup', new_user_registration_url, class: "nav-link" %>
 								</li>
 								<li class="nav-item">
-										<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
+							<%= link_to 'Login', new_user_session_url, class: "nav-link" %>
 								</li>
 								<% end %>
 						</ul>
