@@ -3,6 +3,7 @@
 #
 # Examples:
 #
+
 User.create(email: "kilo@lounge.com", username: "kilolounge", password: "password")
 User.create(email: "sled@production.com", username: "sled", password: "password")
 User.create(email: "gimme@shelter.com", username: "gimmeshelter", password: "password")
@@ -201,3 +202,4 @@ Event.create(name: "Transition ft Menno De Jong",
             starttime: DateTime.strptime("11/17/2018 22:00", "%m/%d/%Y %H:%M"),
             endtime: DateTime.strptime("11/18/2018 04:00", "%m/%d/%Y %H:%M"),
             user_id: 4)
+

@@ -39,6 +39,16 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+
+    @event.user = current_user
+
+    if @event.update(event_params)
+      render plain: event_params.inspect
+    else
+      render "update"
+      redirect_to events_path
+    end
   end
 
   def destroy
