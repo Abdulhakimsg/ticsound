@@ -10,6 +10,13 @@ class EventsController < ApplicationController
   #   @locations = response[:results]
   # end
 
+  def currloca
+    result = "lat: #{params[:lat]} & lon: #{params[:lon]}"
+    session[:lat] = params[:lat]
+    session[:lon] = params[:lon]
+  end
+
+
   def index
     @events = Event.all
     @favourites = Favourite.where(user_id: current_user.id)
