@@ -58,54 +58,71 @@
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
 
 -->
-    <div class = "mycontain">
-        <div class = "headEvent">
-            <h1>My Events</h1>
-        </div>
+<div class = "mycontain">
+    <div class = "headEvent">
+        <h1>My Events</h1>
+    </div>
 
-        <div class="row">
-            <% @myevents.each do |event| %> 
-            <div class="col-sm-6">
-                <div class="card">
-                <img class="card-img" src="<%= event.image %>" alt="Card image">
-                    <h5 class="card-title-my"><%= event.name %></h5>
-                    <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
-                </div>
-                </div>
-                <%end%>
+    <div class="row">
+        <% @myevents.each do |event| %> 
+        <div class="col-sm-6">
+            <div class="card">
+            <img class="card-img" src="<%= event.image %>" alt="Card image">
+                <h5 class="card-title-my"><%= event.name %></h5>
+                <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
             </div>
+            </div>
+            <%end%>
         </div>
+    </div>
+</div>
+
+<div class = "favcontain">
+    <div class ="headFav">
+        <h1>My Favourites<h1>
     </div>
 
 
-
-
-
-
-    <div class = "allcontain">
-        <div class = "allHeadEvent">
-            <h1>All Events</h1>
-        </div>
-
-
-        <div class="card-columns">
-        <% @events.each do |event| %>
+    <div class="card-group row">
+     <% @favourites.each do |favourite| %>
         <div class="card">
-            <img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
-            <div class="card-body">
-            <h4 class="card-title"><%= event.name %></h4>
-             <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
-                    <%= link_to post_fav_path(id: event.id), method: :post do %>
-                        <i class="fas fa-heart fa-3x"></i>
-                <% end %>
-                <%end%>
-            <h5 class="card-title"><%= event.venue %></h5>
-            <p class="card-text"></p>
-            <p class="card-text"><%= event.starttime%></p>
-            </div>
+            <img class="card-img-top" src="<%=favourite.event.image %>" alt="Card image cap">
+            <div class="card-block">
+            <h4 class="card-title"><%=favourite.event.name %></h4>
         </div>
-        <%end%>
+  </div>
+</div>
+ <%end%>
+
+
+
+
+
+
+
+<div class = "allcontain">
+    <div class = "allHeadEvent">
+        <h1>All Events</h1>
     </div>
+
+    <div class="card-columns">
+    <% @events.each do |event| %>
+    <div class="card">
+        <img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
+        <div class="card-body">
+        <h4 class="card-title"><%= event.name %></h4>
+            <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+                <%= link_to post_fav_path(id: event.id), method: :post do %>
+                    <i class="fas fa-heart fa-3x"></i>
+            <% end %>
+            <%end%>
+        <h5 class="card-title"><%= event.venue %></h5>
+        <p class="card-text"></p>
+        <p class="card-text"><%= event.starttime%></p>
+        </div>
+    </div>
+    <%end%>
+</div>
 
 
 
