@@ -1,11 +1,11 @@
-<h1>My ID</h1>
+<!--<h1>My ID</h1>
 
 <h2><%= "WELCOME  #{current_user.username} " %></h2>
 <p><%= image_tag(current_user.avatar_url , width: 96) %></p>
 
 <%=link_to 'CREATE NEW EVENT?', new_event_path %>
 
-<h1>MY EVENTS Today is <%= Time.now.strftime("%m/%d/%Y") %></h1>
+<h1>My EVENTS</h1>
 <table>
     <tr>
         <% @myevents.each do |event| %>
@@ -23,7 +23,7 @@
     <table>
         <% @favourites.each do |favourite| %>
             <tr>
-                <td><%=favourite.event.name %></td>
+                <td><%=favourite.event.name %></td>                
                 <td><%= link_to "Delete Fav", destroy_fav_path(id: favourite.id), method: :delete %></td>
              </td>
             </tr>
@@ -39,89 +39,73 @@
             <td><%= event.address %></td>
             <td><%= event.description %></td>
             <td><%= event.starttime %></td>
-            <td><%= event.endtime %></td>
-            <td><%= event.user_id %></td>
+            <td><%= event.endtime %></td> 
+            <td><%= event.user_id %></td> 
             <td><%= image_tag(event.image_url, width: 100) %></td>
             <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
                 <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
                 <p>
                 <%= form.submit value: "my fav" %>
-                </p>
+                </p> 
                 <% end %>
                 </td>
-            <%end%>
+            <%end%> 
         </tr>
     <% end %>
 </table>
 
 
-<<<<<<< HEAD
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
 
 -->
+    <div class = "mycontain">
+        <div class = "headEvent">
+            <h1>My Events</h1>
+        </div>
 
-
-<div class = "headEvent">
-    <h1>My Events</h1>
-</div>
-
-<div class="row">
-<% @myevents.each do |event| %> 
-  <div class="col-sm-6">
-    <div class="card">
-      <img class="card-img" src="<%= event.image %>" alt="Card image">
-        <h5 class="card-title-my"><%= event.name %></h5>
-        <h3 class="card-title-my"><%= event.name %></h5>
-        <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
-      </div>
+        <div class="row">
+            <% @myevents.each do |event| %> 
+            <div class="col-sm-6">
+                <div class="card">
+                <img class="card-img" src="<%= event.image %>" alt="Card image">
+                    <h5 class="card-title-my"><%= event.name %></h5>
+                    <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
+                </div>
+                </div>
+                <%end%>
+            </div>
+        </div>
     </div>
-    <%end%>
-  </div>
-</div>
-
-<div class = "headEvent">
-    <h1>All Events</h1>
-</div>
 
 
-<div class="card-columns">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+
+
+
+    <div class = "allcontain">
+        <div class = "allHeadEvent">
+            <h1>All Events</h1>
+        </div>
+
+
+        <div class="card-columns">
+        <% @events.each do |event| %>
+        <div class="card">
+            <img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
+            <div class="card-body">
+            <h4 class="card-title"><%= event.name %></h4>
+             <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+                    <%= link_to post_fav_path(id: event.id), method: :post do %>
+                        <i class="fas fa-heart fa-3x"></i>
+                <% end %>
+                <%end%>
+            <h5 class="card-title"><%= event.venue %></h5>
+            <p class="card-text"></p>
+            <p class="card-text"><%= event.starttime%></p>
+            </div>
+        </div>
+        <%end%>
     </div>
-  </div>
-  <div class="card p-3">
-    <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card bg-primary text-white text-center p-3">
-    <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-      <footer class="blockquote-footer">
-        <small>
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  
-</div>
 
 
 
@@ -139,6 +123,4 @@
 
 
 
-=======
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
->>>>>>> 5efb70745221ddbea50be657fa4051d81dbdeb69
+
