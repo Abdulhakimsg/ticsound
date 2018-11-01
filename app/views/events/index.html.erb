@@ -1,11 +1,11 @@
-<!--<h1>My ID</h1>
+<h1>My ID</h1>
 
 <h2><%= "WELCOME  #{current_user.username} " %></h2>
 <p><%= image_tag(current_user.avatar_url , width: 96) %></p>
 
 <%=link_to 'CREATE NEW EVENT?', new_event_path %>
 
-<h1>My EVENTS</h1>
+<h1>MY EVENTS Today is <%= Time.now.strftime("%m/%d/%Y") %></h1>
 <table>
     <tr>
         <% @myevents.each do |event| %>
@@ -23,7 +23,7 @@
     <table>
         <% @favourites.each do |favourite| %>
             <tr>
-                <td><%=favourite.event.name %></td>                
+                <td><%=favourite.event.name %></td>
                 <td><%= link_to "Delete Fav", destroy_fav_path(id: favourite.id), method: :delete %></td>
              </td>
             </tr>
@@ -39,22 +39,23 @@
             <td><%= event.address %></td>
             <td><%= event.description %></td>
             <td><%= event.starttime %></td>
-            <td><%= event.endtime %></td> 
-            <td><%= event.user_id %></td> 
+            <td><%= event.endtime %></td>
+            <td><%= event.user_id %></td>
             <td><%= image_tag(event.image_url, width: 100) %></td>
             <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
                 <td><%= form_with scope: :event, url:post_fav_path(id:event.id) , local: true do |form| %>
                 <p>
                 <%= form.submit value: "my fav" %>
-                </p> 
+                </p>
                 <% end %>
                 </td>
-            <%end%> 
+            <%end%>
         </tr>
     <% end %>
 </table>
 
 
+<<<<<<< HEAD
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
 
 -->
@@ -138,3 +139,6 @@
 
 
 
+=======
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+>>>>>>> 5efb70745221ddbea50be657fa4051d81dbdeb69

@@ -1,50 +1,74 @@
-<%= form_with scope: :event, model: @event, local: true do |form| %>
-
-	<p>
-		<%= form.label :name %><br>
-		<%= form.text_field :name %>
-	</p>
-
-	<p>
-		<%= form.label :venue %><br>
-		<%= form.text_field :venue %>
-	</p>
-
-	<p>
-		<%= form.label :address %><br>
-		<%= form.text_field :address %>
-	</p>
-
-	<p>
-		<%= form.label :ticket_url %><br>
-		<%= form.text_field :ticket_url %>
-	</p>
-
-	<p>
-		<%= form.label :description %><br>
-		<%= form.text_field :description %>
-	</p>
-
-	<p>
-		<%= form.label :starttime %><br>
-		<%= form.datetime_field :starttime %>
-	</p>
-
-	<p>
-		<%= form.label :endtime %><br>
-		<%= form.datetime_field :endtime %>
-	</p>
-
-	<p>
-		<%= form.label :image %><br>
-		<% if @event.image? %>
-		<%= image_tag(@event.image_url) %><br>
-		<%= form.check_box :remove_image %> Remove Image<br>
-		<% end %>
-		<%= form.file_field :image %>
-	</p>
-
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
+<div class="container">
+		<div class="row">
+				<div class="col-sm-12">
+						<h2>Edit Event</h2>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-12">
+						<%= form_with scope: :event, model: @event, local: true do |form| %>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Event Name</span>
+								</div>
+								<%= form.text_field :name, class: "form-control"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Venue Name</span>
+								</div>
+								<%= form.text_field :venue, class: "form-control"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+								</div>
+								<%= form.text_field :address, class: "form-control"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon3">Ticket URL</span>
+								</div>
+								<%= form.text_field :ticket_url, class: "form-control", id: "basic-url"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text">Description</span>
+								</div>
+								<%= form.text_area :description, class: "form-control" %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Start</span>
+								</div>
+								<%= form.datetime_field :starttime, class: "form-control" %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">End</span>
+								</div>
+								<%= form.datetime_field :endtime, class: "form-control" %>
+						</div>
+						<div class="form-check">
+								<% if @event.image? %>
+								<%= image_tag(@event.image_url, width: 100) %><br>
+								<%= form.check_box :remove_image, class: "form-check-input", id: "defaultCheck1" %>
+								<%= form.label :remove_image, class: "form-check-label", for: "defaultCheck1" %>
+								<% end %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+								</div>
+								<div class="custom-file">
+										<%= form.file_field :image, class: "custom-file-input", id: "inputGroupFile01" %>
+										<label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+								</div>
+						</div>
+						<div class="actions">
+								<%= form.submit "Update", class: "btn btn-primary" %>
+						</div>
+						<% end %>
+				</div>
+		</div>
+</div>
