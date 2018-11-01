@@ -1,7 +1,5 @@
-require "byebug"
-
 class EventsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:currloca, :index]
 
   # def get_locations
   #   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{params[:latitude]},#{params[:longitude]}&radius=500&key=#{Rails.application.secrets.google_places_key}"
@@ -17,10 +15,9 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
-    @favourites = Favourite.where(user_id: current_user.id)
-    @myevents = Event.where(user_id: current_user.id)
-
+    @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 20.days)
+    # @favourites = Favourite.where(user_id: current_user.id)
+    # @myevents = Event.where(user_id: current_user.id)
   end
 
   def show
@@ -30,7 +27,6 @@ class EventsController < ApplicationController
     @myevents = Event.near([@event.latitude, @event.longitude], 10, units: :km)
     #get the event from the comparing current day + 10 days
     @myevents = @myevents.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
-
   end
 
   def new

@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
                :password_confirmation, :current_password, :avatar, :remove_avatar)
     }
   end
+
+  def after_sign_in_path_for(resource)
+    request.env["omniauth.origin"] || stored_location_for(resource) || user_path(id: current_user.id)
+  end
 end

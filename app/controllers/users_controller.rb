@@ -1,8 +1,8 @@
-require 'byebug'
-require 'date'
+require "byebug"
+require "date"
 
 class UsersController < ApplicationController
-   before_action :authenticate_user!, except: [:currloca, :index]
+  before_action :authenticate_user!, except: [:currloca, :index]
 
   def currloca
     result = "lat: #{params[:lat]} & lon: #{params[:lon]}"
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @favourites = Favourite.where(user_id: current_user.id)
+    @myevents = Event.where(user_id: current_user.id)
 
     #@events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
     #Event.where(starttime == )
@@ -34,9 +36,5 @@ class UsersController < ApplicationController
       @sortevents = @sortevents.near([session[:lat], session[:lon]], 5, units: :km)
       # @sortevents = @sortevents.where/sort_by
     end
-
-
-
   end
-
 end

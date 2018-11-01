@@ -1,4 +1,84 @@
+<div id="demo" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+		<!-- The slideshow -->
+		<div class="carousel-inner">
+				<div class="carousel-item active">
+						<%= image_tag @sortevents.first.image_url %>
+						<div class="carousel-caption">
+								<h3><%= @sortevents.first.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= @sortevents.first.description.first(180) %>
+								</p>
+						</div>
+				</div>
+				<% @sortevents.drop(1).each do |event| %>
+				<div class="carousel-item">
+						<%= image_tag event.image_url %>
+						<div class="carousel-caption">
+								<h3><%= event.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= event.description.first(180) %>
+								</p>
+						</div>
+				</div>
+				<% end %>
+		</div>
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+
 <h2><%= @user.username %></h2>
+<h2><%= Time.now.strftime("%m/%d/%Y")%></h2>
+
+
+
+
+<div class = "mycontain">
+    <div class = "headEvent">
+        <h1>My Events</h1>
+    </div>
+
+    <div class="row">
+        <% @myevents.each do |event| %> 
+        <div class="col-sm-6">
+            <div class="card">
+            <img class="card-img" src="<%= event.image %>" alt="Card image">
+                <h5 class="card-title-my"><%= event.name %></h5>
+                <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
+            </div>
+            </div>
+            <%end%>
+        </div>
+    </div>
+</div>
+
+<div class = "favcontain">
+    <div class ="headFav">
+        <h1>My Favourites<h1>
+    </div>
+
+
+    <div class="card-group row">
+     <% @favourites.each do |favourite| %>
+        <div class="card">
+            <img class="card-img-top" src="<%=favourite.event.image %>" alt="Card image cap">
+            <div class="card-block">
+            <h4 class="card-title"><%=favourite.event.name %></h4>
+        </div>
+  </div>
+</div>
+ <%end%>
 
 <h2>Events</h2>
 <% @sortevents.each do|event| %>

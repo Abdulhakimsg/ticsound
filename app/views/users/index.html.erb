@@ -1,41 +1,4 @@
-<div id="demo" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-				<li data-target="#demo" data-slide-to="2"></li>
-		</ul>
-		<!-- The slideshow -->
-		<div class="carousel-inner">
-				<div class="carousel-item active">
-						<%= image_tag @sortevents.first.image_url %>
-						<div class="carousel-caption">
-								<h3><%= @sortevents.first.name %></h3>
-								<p style="background: black; display: inline;">
-										<%= @sortevents.first.description.first(180) %>
-								</p>
-						</div>
-				</div>
-				<% @sortevents.drop(1).each do |event| %>
-				<div class="carousel-item">
-						<%= image_tag event.image_url %>
-						<div class="carousel-caption">
-								<h3><%= event.name %></h3>
-								<p style="background: black; display: inline;">
-										<%= event.description.first(180) %>
-								</p>
-						</div>
-				</div>
-				<% end %>
-		</div>
-		<!-- Left and right controls -->
-		<a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-		<a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
+
 <!-- About Section -->
 <div class="container-fluid" id="about">
 		<div class="row">

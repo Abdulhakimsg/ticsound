@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   delete "/favourites/:id", to: "events#destroyfav", as: "destroy_fav"
 
   #ajax request
-  get "/users-coordinates", to: "users#currloca", as:"user_currloc"
- 
+  get "/users-coordinates", to: "users#currloca", as: "user_currloc"
 end
