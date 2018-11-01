@@ -1,3 +1,62 @@
+ <div class = "todayEvent">
+        <h1>Happening Today</h1>
+    </div>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+		<!-- Indicators -->
+		<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
+		<!-- The slideshow -->
+		<div class="carousel-inner" >
+				<div class="carousel-item active ">
+						<div class = "pic"><%= image_tag @events.third.image_url  %></div>
+						<div class="carousel-caption">
+                        <h3><%= @events.third.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= @events.third.description.first(180) %>
+								</p>
+						</div>
+				</div>
+				<% @events.drop(3).take(2).each do |event| %>
+				<div class="carousel-item ">
+						<div class = "pic"><%= image_tag event.image_url %></div>
+						<div class="carousel-caption">
+                        <h3><%= event.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= event.description.first(180) %>
+								</p>
+						</div>
+				</div>
+				<% end %>
+		</div>
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class = "allcontain">
     <div class = "allHeadEvent">
         <h1>All Events</h1>

@@ -1,26 +1,20 @@
-.headEvent{
-    text-align:center;
-    padding:2vh;
-}
-
-h5.card-title-my{
-    text-align:center;
-    height:3vh;
-    padding-bottom:5vh;
-}
 
 .allHeadEvent{
     text-align:center;
     color:white;
 }
 
-.mycontain{
-    margin-left:7vw;
-    margin-right:7vw;
+div.jumbotron.jumbotron-fluid{
+    padding-top:2ch;
+    text-align:center;
+    color:white;
+    margin:0;
+    background-image: url("/mainheader.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .allcontain{
-    margin-top:5vh;
     background-color:#343A40;
     
 }
@@ -28,6 +22,22 @@ h5.card-title-my{
 .fas.fa-heart{
     color:red;
     float:right;
+}
+
+.carousel-inner{
+    height:36vh;  
+}
+
+div.carousel-caption{
+    vertical-align:top;
+}
+
+.carousel-item{
+    vertical-align:bottom;
+}
+
+.todayEvent{
+    text-align:center;
     
 }
 
