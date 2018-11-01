@@ -1,53 +1,69 @@
-<%= form_with scope: :event, url: events_path, local: true do |form| %>
-
-	<p>
-		<%= form.label :name %><br>
-		<%= form.text_field :name %>
-	</p>
-
-	<p>
-		<%= form.label :venue %><br>
-		<%= form.text_field :venue %>
-	</p>
-
-	<p>
-		<%= form.label :address %><br>
-		<%= form.text_field :address %>
-	</p>
-
-	<p>
-		<%= form.hidden_field :latitude %>
-	</p>
-	<p>
-		<%= form.hidden_field :longitude %>
-	</p>
-
-	<p>
-		<%= form.label :ticket_url %><br>
-		<%= form.text_field :ticket_url %>
-	</p>
-
-	<p>
-		<%= form.label :description %><br>
-		<%= form.text_field :description %>
-	</p>
-
-	<p>
-		<%= form.label :starttime %><br>
-		<%= form.datetime_field :starttime %>
-	</p>
-
-	<p>
-		<%= form.label :endtime %><br>
-		<%= form.datetime_field :endtime %>
-	</p>
-
-	<p>
-		<%= form.label :image %><br>
-		<%= form.file_field :image %>
-	</p>
-
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
+<div class="container">
+		<div class="row">
+				<div class="col-sm-12">
+						<h2>New Event</h2>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-12">
+						<%= form_with scope: :event, url: events_path, local: true do |form| %>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Event Name</span>
+								</div>
+								<%= form.text_field :name, class: "form-control"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Venue Name</span>
+								</div>
+								<%= form.text_field :venue, class: "form-control"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+								</div>
+								<%= form.text_field :address, class: "form-control"  %>
+								<%= form.hidden_field :latitude %>
+								<%= form.hidden_field :longitude %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon3">Ticket URL</span>
+								</div>
+								<%= form.text_field :ticket_url, class: "form-control", id: "basic-url"  %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text">Description</span>
+								</div>
+								<%= form.text_area :description, class: "form-control" %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Start</span>
+								</div>
+								<%= form.datetime_field :starttime, class: "form-control" %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">End</span>
+								</div>
+								<%= form.datetime_field :endtime, class: "form-control" %>
+						</div>
+						<div class="input-group mb-3">
+								<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+								</div>
+								<div class="custom-file">
+										<%= form.file_field :image, class: "custom-file-input", id: "inputGroupFile01" %>
+										<label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+								</div>
+						</div>
+						<div class="actions">
+								<%= form.submit "Create", class: "btn btn-primary" %>
+						</div>
+						<% end %>
+				</div>
+		</div>
+</div>
