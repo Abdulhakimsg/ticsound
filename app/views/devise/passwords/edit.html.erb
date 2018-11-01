@@ -15,11 +15,9 @@
 								</div>
 								<%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
 						</div>
-						<p>
 								<% if @minimum_password_length %>
-								<em>(<%= @minimum_password_length %> characters minimum)</em><br />
+								<div class="alert alert-success">(<%= @minimum_password_length %> characters minimum)</div><br />
 								<% end %>
-						</p>
 						<div class="input-group mb-3">
 								<div class="input-group-prepend">
 										<span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>

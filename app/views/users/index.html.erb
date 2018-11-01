@@ -8,26 +8,25 @@
 		<!-- The slideshow -->
 		<div class="carousel-inner">
 				<div class="carousel-item active">
-						<img src="https://www.w3schools.com/bootstrap4/la.jpg">
+						<%= image_tag @sortevents.first.image_url %>
 						<div class="carousel-caption">
-								<h3>Los Angeles</h3>
-								<p>We had such a great time in LA!</p>
+								<h3><%= @sortevents.first.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= @sortevents.first.description.first(180) %>
+								</p>
 						</div>
 				</div>
+				<% @sortevents.drop(1).each do |event| %>
 				<div class="carousel-item">
-						<img src="https://www.w3schools.com/bootstrap4/chicago.jpg">
+						<%= image_tag event.image_url %>
 						<div class="carousel-caption">
-								<h3>Los Angeles</h3>
-								<p>We had such a great time in LA!</p>
+								<h3><%= event.name %></h3>
+								<p style="background: black; display: inline;">
+										<%= event.description.first(180) %>
+								</p>
 						</div>
 				</div>
-				<div class="carousel-item">
-						<img src="https://www.w3schools.com/bootstrap4/ny.jpg">
-						<div class="carousel-caption">
-								<h3>Los Angeles</h3>
-								<p>We had such a great time in LA!</p>
-						</div>
-				</div>
+				<% end %>
 		</div>
 		<!-- Left and right controls -->
 		<a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -37,38 +36,12 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-<!-- Project One Row -->
-<div class="row justify-content-center no-gutters">
-		<div class="col-sm-6">
-				<img class="img-fluid" src="https://blackrockdigital.github.io/startbootstrap-grayscale/img/demo-image-01.jpg" alt="">
-          </div>
-				<div class="col-sm-6">
-						<img class="img-fluid" src="https://blackrockdigital.github.io/startbootstrap-grayscale/img/demo-image-01.jpg" alt="">
-						</div>
-				</div>
-		</div>
-		<!-- Project Two Row -->
-		<div class="row justify-content-center no-gutters">
-				<div class="col-sm-6">
-						<img class="img-fluid" src="https://blackrockdigital.github.io/startbootstrap-grayscale/img/demo-image-02.jpg" alt="">
-          </div>
-						<div class="col-sm-6">
-								<div class="bg-black text-center h-100 project">
-										<img class="img-fluid" src="https://blackrockdigital.github.io/startbootstrap-grayscale/img/demo-image-02.jpg" alt="">
-								</div>
-								</div>
-						</div>
-				<!-- <div class="container-fluid">
+<!-- About Section -->
+<div class="container-fluid" id="about">
 		<div class="row">
-				<div class="col-sm-6">
-					<div id="box-1">
-						Hello
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div id="box-2">
-						hello
-					</div>
+				<div class="col-lg-8 mx-auto">
+						<h2 class="text-white mb-4">Find Music Near You</h2>
+						<p class="text-white-50">Welcome to Ticsound where you can find all the hottest music events. You can also post your own event. Everything we do helps people discover, book and share what Singapore has to offer. From our powerful content and top-quality curation of music to the imagination of our live events – no one knows the city like us.</p>
 				</div>
 		</div>
-</div> -->
+      </div>

@@ -26,9 +26,9 @@
 								</div>
 								<%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
 						</div>
-						<p>
 								<% if @minimum_password_length %>
-								<em>(<%= @minimum_password_length %> characters minimum)</em>
+								<div class="alert alert-warning">(<%= @minimum_password_length %> characters minimum)
+								</div>
 								<% end %>
 						</p>
 						<div class="input-group mb-3">
