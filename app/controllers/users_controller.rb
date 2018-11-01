@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
     @events = Event.all
+    @sortevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
   end
 
   def show

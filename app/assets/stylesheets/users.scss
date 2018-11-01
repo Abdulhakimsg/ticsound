@@ -18,5 +18,10 @@ body {
 }
 
 .bg-black text-center h-100 project {
-	background: black;
+		background: black;
+}
+
+#about {
+	padding: 35px 10px 0 10px;
+	background: linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%);
 }
