@@ -45,18 +45,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <div class = "allcontain">
     <div class = "allHeadEvent">
         <h1>All Events</h1>
@@ -71,8 +59,12 @@
             <% if user_signed_in? %>
             <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
                 <%= link_to post_fav_path(id: event.id), method: :post do %>
-                    <i class="fas fa-heart fa-3x"></i>
-                <% end %>
+                    <i class="far fa-heart fa-3x"></i>
+            <% end %>
+			<% else %>
+				<%= link_to destroy_fav_path(id: event.id), method: :destroy do %>
+				<i class="fas fa-heart fa-3x"></i>
+			<%end%>
             <% end %>
             <%end%>
         <h5 class="card-title"><%= event.venue %></h5>
