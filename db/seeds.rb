@@ -32,7 +32,7 @@ Event.create(name: "BlackKajiXtra - Acid Mothers Temple & The Melting Paraiso UF
              In conjunction with the launch of Trails to the Cosmic Vibrations LP (AMT split with The Observatory)",
              starttime: DateTime.strptime("11/22/2018 19:30", "%m/%d/%Y %H:%M"),
              endtime: DateTime.strptime("11/22/2018 22:30", "%m/%d/%Y %H:%M"),
-             image: Rails.root.join("/Users/hakimabdul/Desktop/WDI/ticsound/public/uploads/event/image/2/42457886_2148839248492442_5575776206374043648_o.jpg").open,
+             image: Rails.root.join("public/uploads/event/image/2/42457886_2148839248492442_5575776206374043648_o.jpg").open,
              user_id: 2)
 
 Event.create(name: "Gimme Shelter",
