@@ -10,18 +10,23 @@
 		</ul>
 		<!-- The slideshow -->
 		<div class="carousel-inner">
-				<div class="carousel-item active ">
+				<div class="carousel-item active">
 						<%= link_to event_path(id: @events.third) do%>
 						<div class="pic">
 								<%= image_tag @events.third.image_url %>
 						</div>
 						<div class="carousel-caption">
-								<h3><%= @events.third.name %></h3>
-								<p style="background: black; display: inline;">
+							<div>
+								<h3 id="carousel_bg"><%= @events.third.name %></h3>
+							</div>
+							<div>
+								<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+							</div>
+								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= @events.third.description.first(180) %>
 								</p>
 						</div>
-						<%end%>
+						<% end %>
 				</div>
 				<% @events.drop(3).take(2).each do |event| %>
 				<div class="carousel-item ">
@@ -30,15 +35,19 @@
 								<%= image_tag event.image_url %>
 						</div>
 						<div class="carousel-caption">
-								<h3><%= event.name %></h3>
-								<p style="background: black; display: inline;">
+							<div>
+								<h3 id="carousel_bg"><%= event.name %></h3>
+								</div>
+								<div>
+								<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+							</div>
+								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= event.description.first(180) %>
 								</p>
 						</div>
 				</div>
 				<% end %>
 				<% end %>
-		</div>
 		<!-- Left and right controls -->
 		<a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -47,6 +56,7 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
+
 <div class="allcontain">
 		<div class="container">
 				<div class="allHeadEvent">

@@ -34,6 +34,11 @@ body {
     border-radius: 50%;
 }
 
+#carousel_bg {
+	background: rgba(0, 0, 0, 0.6);
+	display: inline;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
 }
