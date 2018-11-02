@@ -19,6 +19,8 @@
 								</div>
 								<%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
 						</div>
+						<%=notice%>
+						<%=alert%>
 						<% if devise_mapping.rememberable? -%>
 						<div class="form-check">
 								<%= f.check_box :remember_me, class: "form-check-input", id: "defaultCheck1" %>

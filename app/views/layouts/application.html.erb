@@ -48,16 +48,11 @@
 								</li>
 								<% end %>
 						</ul>
+
+						<ul>
+						</ul>
 				</div>
 		</nav>
-		<div class="container">
-				<p class="notice">
-						<%= notice %>
-				</p>
-				<p class="alert">
-						<%= alert %>
-				</p>
-		</div>
 		<%= yield %>
 </body>
 <!-- Footer -->
@@ -66,15 +61,17 @@
 				<div class="col-sm-12">
 						<table width="100%">
 								<tr>
-										<td>
+										<td class = "welcome">
 												<% if user_signed_in? %>
 												<%= image_tag current_user.avatar_url, class: "avatar" %> Hello,
 												<%= current_user.username %>
 												<% else %>
 												Welcome to Ticsound
 												<% end %>
-										</td>
-										<td align="right">
+
+												</td>
+										
+										<td class = "date" align="right">
 												<strong><%= Date.today %></strong>
 										</td>
 								</tr>
