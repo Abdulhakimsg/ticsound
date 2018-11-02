@@ -16,12 +16,12 @@
 								<%= image_tag @events.third.image_url %>
 						</div>
 						<div class="carousel-caption">
-							<div>
-								<h3 id="carousel_bg"><%= @events.third.name %></h3>
-							</div>
-							<div>
-								<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
-							</div>
+								<div>
+										<h3 id="carousel_bg"><%= @events.third.name %></h3>
+								</div>
+								<div>
+										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= @events.third.description.first(180) %>
 								</p>
@@ -29,18 +29,18 @@
 						<% end %>
 				</div>
 				<% @events.drop(3).take(2).each do |event| %>
-				<div class="carousel-item ">
+				<div class="carousel-item">
 						<%= link_to event_path(id: event.id) do%>
 						<div class="pic">
 								<%= image_tag event.image_url %>
 						</div>
 						<div class="carousel-caption">
-							<div>
-								<h3 id="carousel_bg"><%= event.name %></h3>
+								<div>
+										<h3 id="carousel_bg"><%= event.name %></h3>
 								</div>
 								<div>
-								<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
-							</div>
+										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= event.description.first(180) %>
 								</p>
@@ -48,6 +48,7 @@
 				</div>
 				<% end %>
 				<% end %>
+		</div>
 		<!-- Left and right controls -->
 		<a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
@@ -56,38 +57,37 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-
-<div class="allcontain">
-		<div class="container">
-				<div class="allHeadEvent">
-						<h1>All Events</h1>
-				</div>
-				<div class="card-columns">
-						<% @events.each do |event| %>
-						<div class="card">
-								<img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
-								<div class="card-body">
-										<h4 class="card-title"><%= event.name %></h4>
-										<% if user_signed_in? %>
-										<%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
-										<% if event.find_favourite(current_user) %>
-										<%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete  do %>
-										<i class="fas fa-heart fa-2x"></i>
-										<% end %>
-										<% else %>
-										<%= link_to post_fav_path(id: event.id), method: :post do %>
-										<i class="far fa-heart fa-2x"></i>
-										<%end%>
-										<%end%>
-										<%end%>
-										<h5 class="card-title"><%= event.venue %></h5>
-										<p class="card-text"></p>
-										<p class="card-text">
-												<%= event.starttime%>
-										</p>
-								</div>
+		<div class="allcontain">
+				<div class="container">
+						<div class="allHeadEvent">
+								<h1>All Events</h1>
 						</div>
-						<%end%>
+						<div class="card-columns">
+								<% @events.each do |event| %>
+								<div class="card">
+										<img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
+										<div class="card-body">
+												<h4 class="card-title"><%= event.name %></h4>
+												<% if user_signed_in? %>
+												<%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+												<% if event.find_favourite(current_user) %>
+												<%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete  do %>
+												<i class="fas fa-heart fa-2x"></i>
+												<% end %>
+												<% else %>
+												<%= link_to post_fav_path(id: event.id), method: :post do %>
+												<i class="far fa-heart fa-2x"></i>
+												<%end%>
+												<%end%>
+												<%end%>
+												<h5 class="card-title"><%= event.venue %></h5>
+												<p class="card-text"></p>
+												<p class="card-text">
+														<%= event.starttime%>
+												</p>
+										</div>
+								</div>
+								<%end%>
+						</div>
 				</div>
 		</div>
-</div>
