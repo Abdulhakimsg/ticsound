@@ -15,20 +15,28 @@
         <% @myevents.each do |event| %>
         <div class="col-sm-6">
             <div class="card" style="margin-top: 20px;">
+
             	<div class="card-header" style="padding: 0;">
             			<img class="card-img" src="<%= event.image %>" alt="Card image"/>
           			</div>
-                <div class="card-body" style="padding: 10px;"><strong><%= event.name %></strong></div>
+
+                <div class="card-body" style="padding: 10px;">
+                	<strong>
+                		<%= event.name %>
+                	</strong>
+                </div>
+
                 <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;">
-                <%= link_to "Edit Your Event", edit_event_path(id: event.id)%> | 
+                <%= link_to edit_event_path(id: event.id) do%><i class="fas fa-pen-square"></i> <%end%> |
                 <%= link_to event_path(id: event.id), method: :delete do %>
                 <i class="fas fa-trash-alt"></i>
                 <%end%>
                 </div>
+
             </div>
-            </div>
-            <%end%>
         </div>
+        <%end%>
+    </div>
 
 
 		<div class="row justify-content-center" style="margin-top: 20px; border-bottom: 1px solid lightgrey">
@@ -52,6 +60,7 @@
 		</div>
 
 </div>
+
 <script type="text/javascript">
 	window.onload = getLocation();
 </script>
