@@ -28,8 +28,9 @@
 
                 <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;">
                 <%= link_to edit_event_path(id: event.id) do%><i class="fas fa-pen-square"></i> <%end%> |
+
                 <%= link_to event_path(id: event.id), method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-trash-alt"></i>
                 <%end%>
                 </div>
 
