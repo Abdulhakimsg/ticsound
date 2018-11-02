@@ -1,6 +1,6 @@
 footer {
 		background: #343A40;
-		padding: 15px;
+		padding: 7px;
 		color: white;
 		position: fixed;
 		right: 0;
@@ -24,4 +24,11 @@ body {
 #about {
 	padding: 35px 10px 0 10px;
 	background: linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%);
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
