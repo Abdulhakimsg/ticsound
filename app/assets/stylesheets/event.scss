@@ -1,7 +1,14 @@
-
 .allHeadEvent{
     text-align:center;
     color:white;
+}
+
+
+
+.todayEvent{
+    text-align:center;
+    padding-top:1vh;
+    padding-bottom:1vh;
 }
 
 .jumbotron.jumbotron-fluid{
@@ -54,4 +61,19 @@
     .carousel-caption {position: absolute; top: 0px}
     .input-group {width: 550px;}
 }
+
+.alertme{
+    width:30vw;
+    padding:2vh;
+    float:left
+}
+
+.welcome{
+    width:28vw;
+}
+
+.date{
+    width:16vw;
+}
+
 

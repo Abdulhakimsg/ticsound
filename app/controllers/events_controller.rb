@@ -88,6 +88,13 @@ class EventsController < ApplicationController
     redirect_to events_path(anchor: "event" + "#{params[:id]}")
   end
 
+  def filter
+    startdate = Date.parse(params[:start_date][:year] + "-" + params[:start_date][:month] + "-" + params[:start_date][:day])
+    enddate = Date.parse(params[:end_date][:year] + "-" + params[:end_date][:month] + "-" + params[:end_date][:day])
+    @events = Event.where("starttime >= ? AND starttime < ? ", startdate, enddate)
+    render plain: @events.inspect
+  end
+
   private
 
   def event_params
