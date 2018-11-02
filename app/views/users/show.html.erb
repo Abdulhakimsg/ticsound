@@ -37,7 +37,7 @@
          		<div class="card" style="margin-top: 20px;">
                 <div class="card-header" style="padding: 0;"><img class="card-img" src="<%=favourite.event.image %>" alt="Card image"/></div>
                 <div class="card-body" style="padding: 10px;"><strong><%=favourite.event.name %></strong></div>
-                <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;" ><%= link_to "Delete Fav", destroy_fav_path(id: favourite.id), method: :delete %></div>
+                <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;" ><%= link_to "Delete Fav", delete_fav_path(id: favourite.id), method: :delete %></div>
             </div>
         </div>
     <%end%>

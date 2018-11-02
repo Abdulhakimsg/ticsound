@@ -6,4 +6,8 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   mount_uploader :image, ImageUploader
+
+  def find_favourite(user)
+    Favourite.find_by(event_id: self.id, user_id: user.id)
+  end
 end

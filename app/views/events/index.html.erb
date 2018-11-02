@@ -75,14 +75,15 @@
         <div class="card-body">
         <h4 class="card-title"><%= event.name %></h4>
             <% if user_signed_in? %>
-            <% unless Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
-                <%= link_to post_fav_path(id: event.id), method: :post do %>
-                    <i class="far fa-heart fa-3x"></i>
-					<%end%>
-			<% else %>
-				<%= link_to delete_fav_path(id: event.id), method: :delete do %>
+            <%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
+			<% if event.find_favourite(current_user) %>
+                <%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete , :achor do %>
 					<i class="fas fa-heart fa-3x"></i>
-            <% end %>
+				<% end %>
+			<% else %>
+					<%= link_to post_fav_path(id: event.id), method: :post do %>
+                    <i class="far fa-heart fa-3x"></i>
+            <%end%>
             <%end%>
 			<%end%>
 
