@@ -32,11 +32,22 @@
     text-align:center;
 }
 
-.datepicker{
-    width: 25vw;
-    float:right;
-
+.pickcontain{
+    font-style:white;
+    background-image:url('/mainheader.jpg');
+    background-size:cover;
+    text-align:center;
+    padding-top:5vh;
+    padding-bottom:7vh;
+    
 }
+
+.datepicker{
+    text-align:center;
+    width:35vw;
+}
+
+
 
 @media only screen and (min-width: 600px) {
     .carousel-inner {height: 36vh;}
