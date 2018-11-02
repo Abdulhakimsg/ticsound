@@ -77,12 +77,12 @@
             <% if user_signed_in? %>
             <%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
 			<% if event.find_favourite(current_user) %>
-                <%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete , :achor do %>
-					<i class="fas fa-heart fa-3x"></i>
+                <%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete  do %>
+					<i class="fas fa-heart fa-2x"></i>
 				<% end %>
 			<% else %>
 					<%= link_to post_fav_path(id: event.id), method: :post do %>
-                    <i class="far fa-heart fa-3x"></i>
+                    <i class="far fa-heart fa-2x"></i>
             <%end%>
             <%end%>
 			<%end%>
