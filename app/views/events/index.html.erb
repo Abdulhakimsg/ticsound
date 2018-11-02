@@ -26,7 +26,7 @@
 						</div>
 					<%end%>
 				</div>
-				
+
 				<% @events.drop(3).take(2).each do |event| %>
 				<div class="carousel-item ">
 				<%= link_to event_path(id: event.id) do%>
@@ -82,19 +82,18 @@
         <img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
         <div class="card-body">
         <h4 class="card-title"><%= event.name %></h4>
-            <% if user_signed_in? %>
+        	<% if user_signed_in? %>
             <%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
-			<% if event.find_favourite(current_user) %>
+						<% if event.find_favourite(current_user) %>
                 <%= link_to delete_fav_path(id: event.find_favourite(current_user).id), method: :delete  do %>
 					<i class="fas fa-heart fa-2x"></i>
-				<% end %>
-			<% else %>
-					<%= link_to post_fav_path(id: event.id), method: :post do %>
+								<% end %>
+							<% else %>
+								<%= link_to post_fav_path(id: event.id), method: :post do %>
                     <i class="far fa-heart fa-2x"></i>
             <%end%>
             <%end%>
-			<%end%>
-
+        <%end%>
         <h5 class="card-title"><%= event.venue %></h5>
         <p class="card-text"></p>
         <p class="card-text"><%= event.starttime%></p>
@@ -104,7 +103,10 @@
 	<%end%>
 </div>
 
+<script>
 
+
+</script>
 
 
 
