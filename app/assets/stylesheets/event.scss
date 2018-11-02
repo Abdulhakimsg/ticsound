@@ -4,7 +4,7 @@
     color:white;
 }
 
-div.jumbotron.jumbotron-fluid{
+.jumbotron.jumbotron-fluid{
     padding-top:2ch;
     text-align:center;
     color:white;
@@ -16,28 +16,16 @@ div.jumbotron.jumbotron-fluid{
 
 .allcontain{
     background-color:#343A40;
-    
 }
 
 .fas.fa-heart{
     color:red;
     float:right;
 }
+
 .far.fa-heart{
     color:red;
     float:right;
-}
-
-.carousel-inner{
-    height:36vh;  
-}
-
-div.carousel-caption{
-    vertical-align:top;
-}
-
-.carousel-item{
-    vertical-align:bottom;
 }
 
 .todayEvent{
@@ -48,5 +36,11 @@ div.carousel-caption{
     width: 25vw;
     float:right;
 
+}
+
+@media only screen and (min-width: 600px) {
+    .carousel-inner {height: 36vh;}
+    .carousel-caption {position: absolute; top: 0px}
+    .input-group {width: 550px;}
 }
 
