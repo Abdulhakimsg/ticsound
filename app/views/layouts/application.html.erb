@@ -16,32 +16,23 @@
 
 <body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<% if user_signed_in? %>
-				<%= link_to image_tag('/logo.png'), user_path(id: current_user.id), class: "navbar-brand" %>
-				<% else %>
 				<%= link_to image_tag('/logo.png'), events_path, class: "navbar-brand" %>
-				<% end %>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarText">
 						<ul class="navbar-nav mr-auto">
 								<% if user_signed_in? %>
-								<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event</a>
-										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-												<%= link_to 'All Events', events_path, class: "dropdown-item" %>
-												<%= link_to 'New Event', new_event_url, class: "dropdown-item" %>
-										</div>
-								</li>
-								<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
-										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-												<%= link_to 'Home', user_path(id: current_user.id), class: "dropdown-item" %>
-												<%= link_to 'Settings', edit_user_registration_url, class: "dropdown-item" %>
-										</div>
-								</li>
 								<li class="nav-item active">
+										<%= link_to 'My Events', user_path(id: current_user.id), class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'New Event', new_event_url, class: "nav-link" %>
+								</li>
+								<li class="nav-item">
+										<%= link_to 'Profile', edit_user_registration_url, class: "nav-link" %>
+								</li>
+								<li>
 										<%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "nav-link" %>
 								</li>
 								<% else %>
@@ -56,8 +47,12 @@
 				</div>
 		</nav>
 		<div class="container">
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
+				<p class="notice">
+						<%= notice %>
+				</p>
+				<p class="alert">
+						<%= alert %>
+				</p>
 		</div>
 		<%= yield %>
 </body>
