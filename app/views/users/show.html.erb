@@ -1,95 +1,49 @@
-<div id="demo" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-				<li data-target="#demo" data-slide-to="2"></li>
-		</ul>
-		<!-- The slideshow -->
-		<div class="carousel-inner">
-				<div class="carousel-item active">
-						<%= image_tag @sortevents.first.image_url %>
-						<div class="carousel-caption">
-								<h3><%= @sortevents.first.name %></h3>
-								<p style="background: black; display: inline;">
-										<%= @sortevents.first.description.first(180) %>
-								</p>
-						</div>
-				</div>
-				<% @sortevents.drop(1).each do |event| %>
-				<div class="carousel-item">
-						<%= image_tag event.image_url %>
-						<div class="carousel-caption">
-								<h3><%= event.name %></h3>
-								<p style="background: black; display: inline;">
-										<%= event.description.first(180) %>
-								</p>
-						</div>
-				</div>
-				<% end %>
-		</div>
-		<!-- Left and right controls -->
-		<a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-		<a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
+
+<div class="container">
+
+	<div class="d-flex justify-content-end">
+			<div class="p-2"><p>Username: <%= @user.username %> </p></div>
+			<div class="p-2"><p>Date: <%= Time.now.strftime("%m/%d/%Y")%></p></div>
+	</div>
 
 
-<h2><%= @user.username %></h2>
-<h2><%= Time.now.strftime("%m/%d/%Y")%></h2>
-
-
-
-
-<div class = "mycontain">
-    <div class = "headEvent">
-        <h1>My Events</h1>
-    </div>
+	<div class="row justify-content-center" style="border-bottom: 1px solid lightgrey">
+			<h2><strong>My Events</strong></h2>
+	</div>
 
     <div class="row">
-        <% @myevents.each do |event| %> 
+        <% @myevents.each do |event| %>
         <div class="col-sm-6">
-            <div class="card">
-            <img class="card-img" src="<%= event.image %>" alt="Card image">
-                <h5 class="card-title-my"><%= event.name %></h5>
-                <div class="btn btn-link" ><%= link_to "Edit Your Event", edit_event_path(id: event.id), :class => "btn" %></div>
+            <div class="card" style="margin-top: 20px;">
+            	<div class="card-header" style="padding: 0;">
+            			<img class="card-img" src="<%= event.image %>" alt="Card image"/>
+          			</div>
+                <div class="card-body" style="padding: 10px;"><strong><%= event.name %></strong></div>
+                <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;"><%= link_to "Edit Your Event", edit_event_path(id: event.id)%> | <%= link_to "Delete", event_path(id: event.id), method: :delete %></div>
             </div>
             </div>
             <%end%>
         </div>
-    </div>
-</div>
-
-<div class = "favcontain">
-    <div class ="headFav">
-        <h1>My Favourites<h1>
-    </div>
 
 
-    <div class="card-group row">
-     <% @favourites.each do |favourite| %>
-        <div class="card">
-            <img class="card-img-top" src="<%=favourite.event.image %>" alt="Card image cap">
-            <div class="card-block">
-            <h4 class="card-title"><%=favourite.event.name %></h4>
+		<div class="row justify-content-center" style="margin-top: 20px; border-bottom: 1px solid lightgrey">
+	        <h2><strong>My Favourites</strong></h2>
+	  </div>
+
+
+		<div class="row">
+        <% @favourites.each do |favourite| %>
+         <div class="col-sm-6">
+         		<div class="card" style="margin-top: 20px;">
+                <div class="card-header" style="padding: 0;"><img class="card-img" src="<%=favourite.event.image %>" alt="Card image"/></div>
+                <div class="card-body" style="padding: 10px;"><strong><%=favourite.event.name %></strong></div>
+                <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;" ><%= link_to "Delete Fav", destroy_fav_path(id: favourite.id), method: :delete %></div>
+            </div>
         </div>
-  </div>
+    <%end%>
+		</div>
+
 </div>
- <%end%>
-
-<h2>Events</h2>
-<% @sortevents.each do|event| %>
-<table>
-	<tr>
-		<td><strong><%= event.name %></strong></td>
-		<td><%= event.venue %></td>
-		<td><%= event.address %></td>
-	</tr>
-<%end%>
-
 <script type="text/javascript">
 	window.onload = getLocation();
 </script>
