@@ -30,13 +30,26 @@
 	</div>
 
 
-	<div class="row" style="margin-top: 20px;">
-		<div class="col col-lg-12">
-			<% @myevents.each do |event|%>
-			<p>Nearby Events: <%=link_to event.name, event %>, <%= event.starttime.strftime('%D') %></p>
-			<%end%>
-		</div>
-	</div>
+<h1 class = "nearby" >Nearby Events</h1>
+	<ul class="list-unstyled">
+ <% @myevents.each do |event| %>
+  <li class="media">
+        <%= link_to event_path(id: event.id) do %>
+        <img class="mr-3" src="<%= event.image %>" alt="Generic placeholder image" link="">
+        <%end%>
+        <div class="media-body">
+        <h4 class="mt-0 mb-1 name"><%= event.name %></h4>
+        <h5 class="mt-0 mb-1 rest"><%= event.venue %></h5>
+        <h5 class="mt-0 mb-1 rest"><%= event.starttime.strftime("%m/%d/%Y") %></h5>
+         <h5 class="mt-0 mb-1 rest"><%= event.starttime.strftime("%H:%M") %></h5>
+        
+  </li>
+  <%end%>
+</div>
+</ul>
+	
+		
+
 
 </div>
 <style>
