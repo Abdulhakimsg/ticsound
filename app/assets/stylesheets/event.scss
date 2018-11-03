@@ -1,9 +1,11 @@
 .allHeadEvent{
     text-align:center;
     color:white;
+} 
+
+#demo{
+    margin:auto;
 }
-
-
 
 .todayEvent{
     text-align:center;
@@ -12,7 +14,7 @@
 }
 
 .jumbotron.jumbotron-fluid{
-    padding-top:2ch;
+    padding-top:2vh;
     text-align:center;
     color:white;
     margin:0;
@@ -44,7 +46,7 @@
     background-image:url('/mainheader.jpg');
     background-size:cover;
     text-align:center;
-    padding-top:5vh;
+    padding-top:3vh;
     padding-bottom:7vh;
     
 }
