@@ -11,24 +11,25 @@
 		<!-- The slideshow -->
 		<div class="carousel-inner">
 				<div class="carousel-item active">
-						<%= link_to event_path(id: @events.third) do%>
+				<% @events.drop(3).take(2).each do |event| %>
+						<%= link_to event_path(id: event) do%>
 						<div class="pic">
-								<%= image_tag @events.third.image_url %>
+								<%= image_tag event.image_url %>
 						</div>
 						<div class="carousel-caption">
 								<div>
-										<h3 id="carousel_bg"><%= @events.third.name %></h3>
+										<h3 id="carousel_bg"><%= event.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+										<h6 id="carousel_bg"><%= event.starttime.strftime("%l:%M%p") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
-										<%= @events.third.description.first(180) %>
+										<%= event.description.first(180) %>
 								</p>
+								<%end%>
 						</div>
-						<% end %>
 				</div>
-				<% @events.drop(3).take(2).each do |event| %>
+				<% @events.drop(1).take(5).each do |event| %>
 				<div class="carousel-item">
 						<%= link_to event_path(id: event.id) do%>
 						<div class="pic">
@@ -45,7 +46,9 @@
 										<%= event.description.first(180) %>
 								</p>
 						</div>
+						
 				</div>
+				<%end%>
 				<% end %>
 				<% end %>
 		</div>
