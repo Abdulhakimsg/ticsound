@@ -65,20 +65,22 @@
 		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
 	<%= submit_tag 'Send' %>
 	<% end %>
-
 </div>
 
 		<div class="allcontain">
+		
 				<div class="container">
 						<div class="allHeadEvent">
 								<h1>All Events</h1>
 						</div>
 						<div class="card-columns">
 								<% @events.each do |event| %>
+
 								<div class="card" id="event<%= event.id %>">
 										<img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
 										<div class="card-body" >
 												<h4 class="card-title" ><%= event.name %></h4>
+
 												<% if user_signed_in? %>
 												<%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
 												<% if event.find_favourite(current_user) %>
@@ -91,6 +93,7 @@
 														<%end%>
 													<%end%>
 												<%end%>
+
 												<h5 class="card-title">
 													<%= event.venue %>
 												</h5>
@@ -98,6 +101,7 @@
 												<p class="card-text" >
 														<%= event.starttime%>
 												</p>
+
 										</div>
 								</div>
 								<%end%>
