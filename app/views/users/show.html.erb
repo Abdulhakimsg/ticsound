@@ -16,7 +16,9 @@
         <div class="col-sm-6">
             <div class="card" style="margin-top: 20px;">
             	<div class="card-header" style="padding: 0;">
+                        <%= link_to event_path(id: event.id) do%>
             			<img class="card-img" src="<%= event.image %>" alt="Card image"/>
+                        <%end%>
           			</div>
                 <div class="card-body" style="padding: 10px;"><strong><%= event.name %></strong></div>
                 <div class="card-footer" style="padding: 0px 10px 0px 10px; text-align: right;">
@@ -41,8 +43,10 @@
 		<div class="row">
         <% @favourites.each do |favourite| %>
          <div class="col-sm-6">
+                <%= link_to event_path(id: favourite.id) do%>
          		<div class="card" style="margin-top: 20px;">
                 <div class="card-header" style="padding: 0;"><img class="card-img" src="<%=favourite.event.image %>" alt="Card image"/></div>
+                <%end%>
                 <div class="card-body" style="padding: 10px;"><strong><%=favourite.event.name %></strong>
                 <%= link_to delete_fav_path(id: favourite.id), method: :delete do %>
                 <i class="fas fa-heart fa-2x" id="userheart"></i>
