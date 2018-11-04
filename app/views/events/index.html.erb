@@ -40,7 +40,7 @@
 										<h3 id="carousel_bg"><%= event.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+										<h6 id="carousel_bg"><%= @events.starttime.strftime("%l:%M%p") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= event.description.first(180) %>
