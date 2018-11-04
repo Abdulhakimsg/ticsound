@@ -39,7 +39,7 @@
 										<h3 id="carousel_bg"><%= event.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%H:%M") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= event.description.first(180) %>
@@ -60,54 +60,51 @@
 
 <div class ="pickcontain">
 	<h1>Search Dates</h1>
-		<input type="text" name="daterange" value="Click Here" class="datepicker"/>
-			<script>
-			$(function() {
-			$('input[name="daterange"]').daterangepicker({
-				opens: 'right'
-			}, function(start, end, label) {
-				console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-			});
-			});
-			</script>
 
+	<%= form_tag event_filter_path, method: :post ,id: :search do%>
+
+		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
+	<%= submit_tag 'Send' %>
+
+	<% end %>
 </div>
 
-
-
-
-
-
 		<div class="allcontain">
+
 				<div class="container">
 						<div class="allHeadEvent">
 								<h1>All Events</h1>
 						</div>
 						<div class="card-columns">
 								<% @events.each do |event| %>
-								<div class="card" id= "event<%= event.id %>">
+								<%= link_to event_path(id: event.id) do%>
+								<div class="card" id="event<%= event.id %>">
 										<img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
-										<div class="card-body">
-												<h4 class="card-title"><%= event.name %></h4>
+										<%end%>
+										<div class="card-body" >
+												<h4 class="card-title" ><%= event.name %></h4>
+
 												<% if user_signed_in? %>
 												<%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
 												<% if event.find_favourite(current_user) %>
-													<%= link_to delete_fav_path(id: event.find_favourite(current_user).id),  remote: true, method: :delete  do %>
-												<i class="fas fa-heart fa-2x"></i>
+													<%= link_to delete_fav_path(id: event.find_favourite(current_user).id), remote: true, method: :delete  do %>
+												<i class="fas fa-heart fa-2x" ></i>
 													<% end %>
 												<% else %>
-														<%= link_to post_fav_path(id: event.id),remote: true, method: :post do %>
+														<%= link_to post_fav_path(id: event.id), remote: true, method: :post do %>
 														<i class="far fa-heart fa-2x"></i><!--event.id-->
 														<%end%>
 													<%end%>
 												<%end%>
+
 												<h5 class="card-title">
 													<%= event.venue %>
 												</h5>
-												<p class="card-text"></p>
-												<p class="card-text">
+
+												<p class="card-text" >
 														<%= event.starttime%>
 												</p>
+
 										</div>
 								</div>
 								<%end%>

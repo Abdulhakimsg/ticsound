@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get "/favourites", to: "events#showfav", as: "show_fav"
   # destroy "/favourites/:id", to: "events#destroyfav", as: "destroy_fav"
   delete "/favourites/:id", to: "events#deletefav", as: "delete_fav"
-  #event date filter
 
   get "events/filter", to: "events#showfilter", as: "event_show_filter"
 
