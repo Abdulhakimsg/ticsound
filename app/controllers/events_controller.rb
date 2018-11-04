@@ -68,7 +68,9 @@ class EventsController < ApplicationController
     # current_user = user.events
     current_user.favourites.new(event_id: params[:id])
     current_user.save
-    redirect_to events_path
+    #@currenteventelem = params[:id]
+
+    redirect_to events_path(anchor: "event" + "#{params[:id]}")
   end
 
   # def destroyfav
@@ -78,9 +80,14 @@ class EventsController < ApplicationController
   # end
 
   def deletefav
+    # render plain: params.inspect
+    #@favourites = Favourite.event_id
+    #byebug
     @favourites = Favourite.find(params[:id])
+    #@favourites =
     @favourites.destroy
-    redirect_to events_path
+    #@unlikeevent = Favourite.find(params[:id]).event_id
+    redirect_to events_path(anchor: "event" + "#{@favourites.event_id}")
   end
 
   def filter
