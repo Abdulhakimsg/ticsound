@@ -60,13 +60,23 @@
 
 <div class ="pickcontain">
 	<h1>Search Dates</h1>
-
-	<%= form_tag event_filter_path, method: :post ,id: :search do%>
-		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
-	<%= submit_tag 'Send' %>
-	<% end %>
+		<input type="text" name="daterange" value="Click Here" class="datepicker"/>
+			<script>
+			$(function() {
+			$('input[name="daterange"]').daterangepicker({
+				opens: 'right'
+			}, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			});
+			});
+			</script>
 
 </div>
+
+
+
+
+
 
 		<div class="allcontain">
 				<div class="container">
@@ -75,18 +85,18 @@
 						</div>
 						<div class="card-columns">
 								<% @events.each do |event| %>
-								<div class="card" id="event<%= event.id %>">
+								<div class="card" id= "event<%= event.id %>">
 										<img class="card-img-top" src="<%= event.image %>" alt="Card image cap">
-										<div class="card-body" >
-												<h4 class="card-title" ><%= event.name %></h4>
+										<div class="card-body">
+												<h4 class="card-title"><%= event.name %></h4>
 												<% if user_signed_in? %>
 												<%# if Favourite.find_by(event_id: event.id, user_id: current_user.id) %>
 												<% if event.find_favourite(current_user) %>
-													<%= link_to delete_fav_path(id: event.find_favourite(current_user).id), remote: true, method: :delete  do %>
-												<i class="fas fa-heart fa-2x" ></i>
+													<%= link_to delete_fav_path(id: event.find_favourite(current_user).id),  remote: true, method: :delete  do %>
+												<i class="fas fa-heart fa-2x"></i>
 													<% end %>
 												<% else %>
-														<%= link_to post_fav_path(id: event.id), remote: true, method: :post do %>
+														<%= link_to post_fav_path(id: event.id),remote: true, method: :post do %>
 														<i class="far fa-heart fa-2x"></i><!--event.id-->
 														<%end%>
 													<%end%>
@@ -94,8 +104,8 @@
 												<h5 class="card-title">
 													<%= event.venue %>
 												</h5>
-
-												<p class="card-text" >
+												<p class="card-text"></p>
+												<p class="card-text">
 														<%= event.starttime%>
 												</p>
 										</div>
@@ -104,4 +114,3 @@
 						</div>
 				</div>
 		</div>
-

@@ -1,0 +1,29 @@
+<div class ="pickcontain">
+	<h1>Search Dates</h1>
+
+	<%= form_tag event_filter_path, method: :post ,id: :search do%>
+		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
+	<%= submit_tag 'Send' %>
+	<% end %>
+</div>
+
+<ul class="list-unstyled">
+ <% @events.each do |event| %>
+  <li class="media">
+        <%= link_to event_path(id: event.id) do %>
+        <img class="mr-3" src="<%= event.image %>" alt="Generic placeholder image" link="">
+        <%end%>
+        <div class="media-body">
+        <h4 class="mt-0 mb-1 name"><%= event.name %></h4>
+        <h5 class="mt-0 mb-1 rest"><%= event.venue %></h5>
+        <h5 class="mt-0 mb-1 rest"><%= event.starttime.strftime("%m/%d/%Y") %></h5>
+         <h5 class="mt-0 mb-1 rest"><%= event.starttime.strftime("%H:%M") %></h5>
+        </div>
+  </li>
+  <%end%>
+</ul>
+
+
+
+
+

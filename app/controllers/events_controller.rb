@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:currloca, :index]
+  before_action :authenticate_user!, except: [:currloca, :index, :filter, :show]
 
   # def get_locations
   #   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{params[:latitude]},#{params[:longitude]}&radius=500&key=#{Rails.application.secrets.google_places_key}"
@@ -94,7 +94,7 @@ class EventsController < ApplicationController
     startdate = Date.parse(params[:start_date][:year] + "-" + params[:start_date][:month] + "-" + params[:start_date][:day])
     enddate = Date.parse(params[:end_date][:year] + "-" + params[:end_date][:month] + "-" + params[:end_date][:day])
     @events = Event.where("starttime >= ? AND starttime < ? ", startdate, enddate)
-    render plain: @events.inspect
+    # render plain: @events.inspect
   end
 
   private

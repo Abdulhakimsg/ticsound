@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # destroy "/favourites/:id", to: "events#destroyfav", as: "destroy_fav"
   delete "/favourites/:id", to: "events#deletefav", as: "delete_fav"
   #event date filter
+
+  get "events/filter", to: "events#showfilter", as: "event_show_filter"
+
   post "events/filter", to: "events#filter", as: "event_filter"
 
   #ajax request
