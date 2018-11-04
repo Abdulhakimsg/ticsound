@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    #(byebug)
+   
     @event = Event.find(params[:id])
     #get the lat and lon for the pin the radius
     @myevents = Event.near([@event.latitude, @event.longitude], 10, units: :km)
@@ -82,7 +82,7 @@ class EventsController < ApplicationController
   def deletefav
     # render plain: params.inspect
     #@favourites = Favourite.event_id
-    #byebug
+    
     @favourites = Favourite.find(params[:id])
     #@favourites =
     @favourites.destroy
