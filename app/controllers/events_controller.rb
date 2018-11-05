@@ -15,13 +15,12 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 20.days)
+    @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
     # @favourites = Favourite.where(user_id: current_user.id)
     # @myevents = Event.where(user_id: current_user.id)
   end
 
   def show
-   
     @event = Event.find(params[:id])
     #get the lat and lon for the pin the radius
     @myevents = Event.near([@event.latitude, @event.longitude], 10, units: :km)
@@ -82,7 +81,7 @@ class EventsController < ApplicationController
   def deletefav
     # render plain: params.inspect
     #@favourites = Favourite.event_id
-    
+
     @favourites = Favourite.find(params[:id])
     #@favourites =
     @favourites.destroy
