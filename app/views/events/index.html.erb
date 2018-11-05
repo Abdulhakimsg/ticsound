@@ -22,9 +22,6 @@
 								<div>
 										<h6 id="carousel_bg"><%= @todayevents.first.starttime.strftime("%l:%M%p") %></h6>
 								</div>
-								<p class="d-none d-md-inline" id="carousel_bg">
-										<%= @todayevents.first.description.first(180) %>
-								</p>
 						</div>
 						<% end %>
 				</div>
@@ -41,9 +38,6 @@
 								<div>
 										<h6 id="carousel_bg"><%= event.starttime.strftime("%H:%M") %></h6>
 								</div>
-								<p class="d-none d-md-inline" id="carousel_bg">
-										<%= event.description.first(180) %>
-								</p>
 						</div>
 				</div>
 				<% end %>
