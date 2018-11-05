@@ -11,24 +11,24 @@
 		<!-- The slideshow -->
 		<div class="carousel-inner">
 				<div class="carousel-item active">
-						<%= link_to event_path(id: @events.third) do%>
+						<%= link_to event_path(id: @todayevents.first) do%>
 						<div class="pic">
-								<%= image_tag @events.first.image_url %>
+								<%= image_tag @todayevents.first.image_url %>
 						</div>
 						<div class="carousel-caption">
 								<div>
-										<h3 id="carousel_bg"><%= @events.first.name %></h3>
+										<h3 id="carousel_bg"><%= @todayevents.first.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.first.starttime.strftime("%l:%M%p") %></h6>
+										<h6 id="carousel_bg"><%= @todayevents.first.starttime.strftime("%l:%M%p") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
-										<%= @events.first.description.first(180) %>
+										<%= @todayevents.first.description.first(180) %>
 								</p>
 						</div>
 						<% end %>
 				</div>
-				<% @events.take(2).each do |event| %>
+				<% @todayevents.drop(1).take(2).each do |event| %>
 				<div class="carousel-item">
 						<%= link_to event_path(id: event.id) do%>
 						<div class="pic">
@@ -39,7 +39,7 @@
 										<h3 id="carousel_bg"><%= event.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%H:%M") %></h6>
+										<h6 id="carousel_bg"><%= event.starttime.strftime("%H:%M") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
 										<%= event.description.first(180) %>
@@ -61,18 +61,16 @@
 <div class ="pickcontain">
 	<h1>Search Dates</h1>
 
-
-	<%= form_tag event_filter_path, method: :post ,id: :search do%>
-
+	<%= form_tag event_filter_path, method: :post ,id: :search do%>	
+	
 		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
 	<%= submit_tag 'Send' %>
-
-
+	
 	<% end %>
 </div>
 
 		<div class="allcontain">
-
+		
 				<div class="container">
 						<div class="allHeadEvent">
 								<h1>All Events</h1>
@@ -113,3 +111,4 @@
 						</div>
 				</div>
 		</div>
+
