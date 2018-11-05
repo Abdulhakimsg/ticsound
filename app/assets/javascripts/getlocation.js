@@ -13,8 +13,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-        let latitude = position.coords.latitude
-        let longitude = position.coords.longitude
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
         console.log("Latitude: " + latitude + "Longitude: " + longitude);
 
 
