@@ -13,22 +13,22 @@
 				<div class="carousel-item active">
 						<%= link_to event_path(id: @events.third) do%>
 						<div class="pic">
-								<%= image_tag @events.third.image_url %>
+								<%= image_tag @events.first.image_url %>
 						</div>
 						<div class="carousel-caption">
 								<div>
-										<h3 id="carousel_bg"><%= @events.third.name %></h3>
+										<h3 id="carousel_bg"><%= @events.first.name %></h3>
 								</div>
 								<div>
-										<h6 id="carousel_bg"><%= @events.third.starttime.strftime("%l:%M%p") %></h6>
+										<h6 id="carousel_bg"><%= @events.first.starttime.strftime("%l:%M%p") %></h6>
 								</div>
 								<p class="d-none d-md-inline" id="carousel_bg">
-										<%= @events.third.description.first(180) %>
+										<%= @events.first.description.first(180) %>
 								</p>
 						</div>
 						<% end %>
 				</div>
-				<% @events.drop(3).take(2).each do |event| %>
+				<% @events.take(2).each do |event| %>
 				<div class="carousel-item">
 						<%= link_to event_path(id: event.id) do%>
 						<div class="pic">
@@ -61,10 +61,12 @@
 <div class ="pickcontain">
 	<h1>Search Dates</h1>
 
+
 	<%= form_tag event_filter_path, method: :post ,id: :search do%>
 
 		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
 	<%= submit_tag 'Send' %>
+
 
 	<% end %>
 </div>

@@ -1,4 +1,4 @@
-require "byebug"
+
 require "date"
 
 class UsersController < ApplicationController
