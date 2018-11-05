@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @todayevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 2.days)
+    @todayevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 30.days)
     @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 100.days)
     # @favourites = Favourite.where(user_id: current_user.id)
     # @myevents = Event.where(user_id: current_user.id)
