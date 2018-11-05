@@ -61,16 +61,18 @@
 <div class ="pickcontain">
 	<h1>Search Dates</h1>
 
-	<%= form_tag event_filter_path, method: :post ,id: :search do%>	
-	
+
+	<%= form_tag event_filter_path, method: :post ,id: :search do%>
+
 		<%= select_date Date.today, prefix: :start_date %> to <%= select_date Date.tomorrow, prefix: :end_date %>
 	<%= submit_tag 'Send' %>
-	
+
+
 	<% end %>
 </div>
 
 		<div class="allcontain">
-		
+
 				<div class="container">
 						<div class="allHeadEvent">
 								<h1>All Events</h1>
@@ -111,4 +113,3 @@
 						</div>
 				</div>
 		</div>
-
