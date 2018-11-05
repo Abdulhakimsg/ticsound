@@ -205,3 +205,31 @@ Event.create(name: "Transition ft Menno De Jong",
              endtime: DateTime.strptime("11/18/2018 04:00", "%m/%d/%Y %H:%M"),
              image: Rails.root.join("public/uploads/event/image/12/mennode.png").open,
              user_id: 4)
+
+Event.create(name: "Council Mondays: Deen, Haan, Cats On Crack & Maurice Simon",
+             venue: "Headquarters",
+             address: "66 Boat Quay Singapore",
+             ticket_url: " ",
+             description: "No-work-Tuesday calls for a party! Join us as we celebrate the eve of Deepavali with our trusty feline CATS ON CRACK as she teams up with Maurice Simon Upstairs to dish out the psychedelic melodies to send the dance floor into a hypnotic stomp.
+
+            Meanwhile, back in the cage at Headquarters, techno underdog Haan and DEEN step up to dish out skull-splitting kickdrums, earth-shaking basslines and distorted synths all night long.
+            ",
+             starttime: DateTime.strptime("11/05/2018 21:00", "%m/%d/%Y %H:%M"),
+             endtime: DateTime.strptime("11/06/2018 01:00", "%m/%d/%Y %H:%M"),
+             image: Rails.root.join("public/uploads/event/image/14/43725924_686042068449281_4148750773699739648_n.jpg").open,
+             user_id: 9)
+
+Event.create(name: "After Dark with Rødhåd (GER) and James Riach",
+             venue: "Kilo Lounge",
+             address: "21 Tanjong Pagar Road",
+             ticket_url: " ",
+             description: " At the the end of the 1990s Rødhåd laid the groundwork for his DJ-career. He organised small open-air-parties in the outskirts of Berlin just for the fun of it. The word spread quickly far beyond Berlin’s and Germany’s borders about the new kid on
+            the block. His specific style, consisting of Dub-Techno mixed with percussive grooves and his timeless, perfect mixing technique garnered him widespread recognition.
+            
+            In 2009, he launched his own regular club night with himself as resident: DYSTOPIAN. Such legendary locations as the Arena Club, the Tape Club or Horst Krzbrg in Berlin have been witness to these intense club nights. Around 2010, the famous Berlin club Berghain recognised Rødhåds craft. His sound and his style of mixing fit neatly to the philosophy of this place, and he started DJing there regularly. From then on he had gigs in places all over Europe, such as Trouw (Amsterdam), Concrete (Paris), Rex (Paris), Lux (Lisbon), Fuse (Brussels) and major
+            scene events such as Awakenings, Weather Festival, or Melt Festival. In 2012, he released his first record on his label DYSTOPIAN. Rødhåd’s tracks immediately received praise by Robert Hood, Jeff Mills, Marcel Dettmann, Ben Klock, Luke Slater, Laurent Garnier, Sven Väth, Dave Clarke. Also labels such as Token, CLR & Cocoon became aware of the young producer.
+            He caught his big break in the same year, as he was featured and interviewed as BREAKTHROUGH ARTIST OF THE YEAR on the paramount website for electronic music",
+             starttime: DateTime.strptime("11/05/2018 21:00", "%m/%d/%Y %H:%M"),
+             endtime: DateTime.strptime("11/06/2018 01:00", "%m/%d/%Y %H:%M"),
+             image: Rails.root.join("public/uploads/event/image/15/zgtdxcwuf1avse8iwztp.jpg").open,
+             user_id: 1)
