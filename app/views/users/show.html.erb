@@ -38,7 +38,7 @@
         <% @favourites.each do |favourite| %>
          <div class="col-sm-6">
                 <%= link_to event_path(id: favourite.id) do%>
-         		<div class="card" style="margin-top: 20px;">
+         		<div class="card" style="margin-top: 20px;" id="event<%= favourite.id %>">
                 <div class="card-header" style="padding: 0;"><img class="card-img" src="<%=favourite.event.image %>" alt="Card image"/></div>
                 <%end%>
                 <div class="card-body" style="padding: 10px;"><strong><%=favourite.event.name %></strong>
