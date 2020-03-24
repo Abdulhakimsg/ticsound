@@ -15,8 +15,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @todayevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 500.days)
-    @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 500.days)
+    @todayevents = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 1000.days)
+    @events = Event.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 1000.days)
     # @favourites = Favourite.where(user_id: current_user.id)
     # @myevents = Event.where(user_id: current_user.id)
   end
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     #get the lat and lon for the pin the radius
     @myevents = Event.near([@event.latitude, @event.longitude], 10, units: :km)
     #get the event from the comparing current day + 10 days
-    @myevents = @myevents.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 10.days)
+    @myevents = @myevents.where(starttime: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day + 600.days)
   end
 
   def new
